@@ -1,0 +1,500 @@
+.welcome-message {
+    overflow: hidden; 
+    white-space: nowrap; /* Ngăn dòng chữ xuống dòng */
+    background-color: #d9dda2; 
+    font-size: 14px; 
+    font-weight: bold; 
+    position: relative; 
+    padding: 10px 0; 
+}
+
+.welcome-message span {
+    display: inline-block;
+    animation: scroll 15s linear infinite, colorChange 5s linear infinite;
+    padding-left: 100%;
+    -webkit-animation: scroll 15s linear infinite, colorChange 5s linear infinite;
+}
+/* Animation cho hiệu ứng cuộn */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}
+
+/* Animation cho hiệu ứng đổi màu */
+@keyframes colorChange {
+    0% {
+        color: #FF5733; 
+    }
+    25% {
+        color: #378c44; 
+    }
+    50% {
+        color: #3357FF; 
+    }
+    75% {
+        color: #FF33A1; 
+    }
+    100% {
+        color: #FF5733; 
+    }
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    line-height: 1.4; 
+    color: #333;
+    background-color: #f9f9f9; 
+    margin: 0 20px;
+    padding: 0px 170px;
+}
+
+.container {
+    width: 100%; 
+    max-width: 100%; 
+    max-height: 670px;
+    margin: 0 auto; 
+}
+
+
+
+/* Header */
+.header-banner{
+    height: 160px;
+}
+.header-banner img {
+    width: 100%;
+    height: 160px;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #800000;
+    padding: 0px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.navbar ul li {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 15px; 
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.navbar ul li a:hover {
+    background-color: #cc0000;
+    color: #fff;
+}
+
+/* Dropdown */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #750d0d;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease; 
+}
+
+.dropdown-content a:hover {
+    background-color: #a71919;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #cc0000;
+}
+
+/* Divider */
+
+.divider {
+    height: 1px;
+    background-color: #ccc;
+    margin: 3px 0; 
+}
+
+/* Main banner */
+.main-banner img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; 
+}
+
+/* Main news section */
+.left-content {
+    width: 73%;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.main-news .news-image {
+    width: 100%;
+    max-width: 400px; 
+    height: 250px;   
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cố định hình ảnh luôn vừa với khung */
+.main-news .news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Khung chứa nội dung văn bản */
+.main-news {
+    width: 100%;
+    flex : 2;
+    max-width: 425px; 
+    height: 350px;   
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;   
+    flex-direction: column;
+    overflow: hidden;
+    position: relative; 
+}
+
+/* Tiêu đề luôn giữ kích thước và căn giữa */
+.main-news .news-title {
+    font-size: 16px;
+    font-weight: bold;
+    width: 400px;
+    max-height: 150px;  
+    overflow: hidden;  
+    text-overflow: ellipsis; 
+    white-space: normal;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    margin-top: 5px; 
+    position: relative; 
+}
+
+/* Nội dung tiêu đề khi hover (hiển thị đầy đủ) */
+.main-news .news-title:hover::after {
+    content: attr(data-title); 
+    position: absolute;
+    left: 0;
+    top: 120%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    white-space: normal; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    z-index: 10;
+}
+
+/* Nội dung tin tức */
+.main-news .news-content {
+    font-size: 13px;
+    color: #333;
+    flex-grow: 1; 
+    overflow-y: auto;  
+    text-align: justify; 
+    margin-top: 5px; 
+    white-space: normal; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+}
+
+
+.main-news-content {
+    flex-grow: 1; 
+}
+
+.recent-news-list {
+    max-width: 300px; 
+}
+
+.recent-news-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left : -45px
+;
+}
+
+.recent-news-list ul li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 5px;
+}
+
+.recent-news-list ul li a {
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.recent-news-list ul li a:hover {
+    color: #ffcc00;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+}
+
+.container h3 {
+width: 100%;
+}
+
+/* Featured News Section */
+.featured-news-section {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+.featured-news-title {
+    font-size: 19px;
+    font-weight: bold;
+    color: #d41616;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top : -5px;
+}
+/* Wrapper để chứa main-news và recent-news-list bên cạnh nhau */
+.news-wrapper {
+    display: flex;
+
+    align-items: flex-start;
+    gap: 60px; 
+}
+
+/* Right sidebar */
+.right-sidebar {
+    width: 40%; 
+    padding: 35px 0; 
+    margin: 0 auto; 
+    background-color: transparent; 
+    margin-bottom: 0%;
+}
+
+.category-list {
+    list-style-type: none; 
+    margin: 0; 
+    margin-top: 7px;
+    padding: 0; 
+}
+
+.category-list button {
+    width: 100%; 
+    padding: 10px 10px; 
+    background-color: #cc0000;
+    color: #fff; 
+    border: 1px solid #fff; 
+    font-size: 14px;
+    font-weight: bold; 
+    text-align: start; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.category-list button:hover {
+    background-color: #b30000; 
+}
+
+/* Khoảng cách giữa các nút với nhau */
+.category-list button + button {
+    margin-top: -1px; 
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #634033;
+    color: white;
+    height: 150px;
+}
+
+/* Carousel Container */
+.news-carousel {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.news-carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-item {
+    min-width: 200px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.carousel-item p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #000;
+}
+
+/* Nút mũi tên cho Next và Back */
+.carousel-btn {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.container {
+    display: flex;
+}
+
+/*nc*/
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.news-section {
+    background-color: white;
+    padding: 0px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1 1 30%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.section-title {
+    font-size: 15px;
+    background-color: #b62218;
+    color: white;
+    padding: 7px;
+    border-radius: 5px;
+    text-align: start;
+    font-family: 'Tahoma', sans-serif; 
+    font-weight: bold; 
+}
+
+.latest-news {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.latest-news-img {
+    width: 250px;
+    height: 100px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.latest-news-title a {
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    text-decoration: none; 
+    font-family: 'Arial', sans-serif;
+}
+
+.latest-news-title a:hover {
+    color: #b62218; 
+}
+
+.news-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.news-list li {
+    font-size: 14px;
+    color: #555; 
+    margin-bottom: 8px;
+    font-family: 'Verdana', sans-serif;
+    margin-left: 30px;
+}
+
+.news-list li a {
+    text-decoration: none; 
+    color: #888; 
+    transition: color 0.3s ease; 
+}
+
+.news-list li a:hover {
+    color: #b62218; 
+}

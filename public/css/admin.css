@@ -1,0 +1,201 @@
+/* admin.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 170px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+.sidebar h2 a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 13px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #555;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+}
+
+.content h3 a {
+    text-decoration: none;
+    color: #3c3a3a;
+    font-size: 13px;
+    position: absolute;
+    top: 10px;
+    right: 35px;
+}
+
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content table th,
+.content table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.content table th {
+    background-color: #f2f2f2;
+}
+
+.content table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.content table tr:hover {
+    background-color: #ddd;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    font-size: 11px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-overlay {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 1040px;
+    max-height: 100%;
+}
+
+.modal-content img {
+    width: 500px;
+    height: 360px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    padding: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="url"],
+form select,
+form textarea {
+    /* Thêm textarea cho nội dung */
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 10px; /* Thay đổi margin-bottom cho nhất quán */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form textarea {
+    /* Thêm kiểu dáng cho textarea */
+    min-height: 100px; /* Đặt chiều cao tối thiểu cho textarea */
+}
+
+form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Thêm CSS để hiển thị nội dung dài quá một số ký tự nhất định thì hiển thị dấu ... */
+.content table td.content-cell {
+    max-width: 200px; /* Đặt giới hạn chiều rộng tối đa */
+    white-space: nowrap; /* Ngăn ngừng xuống dòng */
+    overflow: hidden; /* Ẩn phần nội dung vượt quá chiều rộng */
+    text-overflow: ellipsis; /* Hiển thị dấu ... khi nội dung vượt quá chiều rộng */
+}

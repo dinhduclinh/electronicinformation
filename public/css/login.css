@@ -1,0 +1,112 @@
+body {
+    background-image: url('https://storage-vnportal.vnpt.vn/nbh-ubnd/sitefolders/root/imagelibrary/636468744555016676.jpg'); /* Đường dẫn đến hình ảnh */
+    background-size: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ nền */
+    background-position: center; /* Căn giữa hình ảnh */
+    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.login-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+.login-box .error {
+    color: #ff0000;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.captcha-group {
+    margin-bottom: 20px;
+    display: contents;
+}
+
+.captcha-group img {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.captcha-row {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.captcha-row img {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 40px;
+}
+
+.captcha-row input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-group .back-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.button-group button {
+    background-color: #ff001ea0;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.button-group button:hover {
+    background-color: #4500b3;
+}

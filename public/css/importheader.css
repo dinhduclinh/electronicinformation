@@ -1,0 +1,83 @@
+/* Reset CSS cho file gioithieu.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+.gioithieu-body {
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    line-height: 1.4; 
+    color: #333;
+    background-color: #f9f9f9; 
+    margin: 0 20px;
+    padding: 0px 170px;
+}
+
+/* Container for gioithieu section */
+.gioithieu-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Main title styling */
+.gioithieu-title {
+    font-size: 24px;
+    color: #b62218;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Paragraph styling */
+.gioithieu-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* .gioithieu-text figure{
+    text-align: center;
+} */
+.gioithieu-text img {
+    height: 400px;
+    width: 600px;
+    margin-left: 200px;
+}
+
+
+/* Highlighted paragraph */
+.gioithieu-highlight {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #b62218;
+}
+
+/* Image container styling */
+.gioithieu-image-section {
+    text-align: center;
+    margin-top: 20px;
+    
+}
+
+.gioithieu-image-section img {
+    width: 700px;
+    height: 500px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.gioithieu-caption {
+    font-size: 13px; /* Kích thước chữ */
+    color: #666; /* Màu sắc chữ */
+    text-align: center; /* Căn giữa */
+    margin-top: 5px; /* Khoảng cách phía trên */
+}
