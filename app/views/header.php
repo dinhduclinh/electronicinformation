@@ -1,3 +1,18 @@
+<?php
+// Yêu cầu file Database để tạo kết nối
+require_once __DIR__ . '/../../config/database.php';
+require_once __DIR__ . '/../controllers/WelcomeMessageController.php';
+
+// Tạo kết nối cơ sở dữ liệu
+$database = new Database();
+$dbConnection = $database->getConnection();
+
+// Khởi tạo WelcomeMessageController với kết nối cơ sở dữ liệu
+$welcomeController = new WelcomeMessageController($dbConnection);
+
+// Lấy thông báo chào mừng từ cơ sở dữ liệu
+$welcomeMessage = $welcomeController->getWelcomeMessage();
+?>
 <header>
     <div class="header-banner">
         <img src="../img/header.gif" alt="Header Banner">
@@ -20,6 +35,6 @@
         </ul>
     </nav>
     <div class="welcome-message">
-        <span>Chào mừng bạn đến với trang thông tin điện tử !</span>
+        <span><?= htmlspecialchars($welcomeMessage) ?></span>
     </div>
 </header>

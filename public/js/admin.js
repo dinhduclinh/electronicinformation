@@ -30,7 +30,7 @@ $(document).ready(function () {
       .attr("src");
     var content = $(this).closest("tr").find("td:nth-child(5)").html();
     var isFeatured =
-      $(this).closest("tr").find("td:nth-child(6)").text() === "1"; // Kiểm tra xem tin có phải là nổi bật không
+      $(this).closest("tr").find("td:nth-child(7)").text() === "Có"; // Lấy giá trị is_featured từ cột mới
 
     // Chuyển đổi nội dung HTML thành văn bản thuần
     var plainTextContent = $("<div>").html(content).text();
@@ -92,7 +92,7 @@ $(document).ready(function () {
     }
 
     // Lấy giá trị của checkbox tin nổi bật
-    var isFeatured = $("#editIsFeatured").prop("checked") ? 1 : 0;
+    var isFeatured = $("#editIsFeatured").prop("checked") ? "true" : "false";
     formData += "&is_featured=" + isFeatured;
 
     console.log("Form data:", formData);
@@ -137,7 +137,6 @@ $(document).ready(function () {
     console.log("Submit delete form"); // Log thông tin khi submit
     var formData = $(this).serialize();
     console.log("Form data:", formData);
-
     $.ajax({
       url: "admin.php", // Đường dẫn đến file PHP xử lý
       type: "POST",
@@ -165,7 +164,7 @@ $(document).ready(function () {
     }
 
     // Lấy giá trị của checkbox tin nổi bật
-    var isFeatured = $("#is_featured").prop("checked") ? 1 : 0;
+    var isFeatured = $("#is_featured").prop("checked") ? "true" : "false";
     formData += "&is_featured=" + isFeatured;
 
     console.log("Form data:", formData);

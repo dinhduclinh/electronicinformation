@@ -33,6 +33,7 @@ if (isset($_GET['slug'])) {
     echo "<p>Không tìm thấy bài viết.</p>";
 }
         ?>
+        <a href="http://localhost/ProjectOJT/public/">Trở lại</a>
     </div>
 
     <?php include '../app/views/footer.php'; ?>

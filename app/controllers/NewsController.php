@@ -9,8 +9,6 @@ class NewsController {
     }
 
     public function index() {
-        // Lấy tất cả tin tức
-        $news = $this->model->getNews();
         // Lấy tin tức mới nhất
         $latestNews = $this->model->getLatestNews();
         // Truyền dữ liệu vào view

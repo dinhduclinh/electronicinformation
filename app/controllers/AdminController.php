@@ -28,21 +28,18 @@ class AdminController {
     }
 
     public function addNews() {
-        $title = $_POST['title'];
-        $slug = $this->generateSlug($title);  // Tạo URL dựa trên tiêu đề
-        $image_url = $_POST['image_url'];
-        $content = $_POST['content'];
-        $category = $_POST['category'];
-        $is_featured = isset($_POST['is_featured']) ? 1 : 0;  // Kiểm tra xem checkbox có được chọn không
+    $title = $_POST['title'];
+    $slug = $this->generateSlug($title);  
+    $image_url = $_POST['image_url'];
+    $content = $_POST['content'];
+    $category = $_POST['category'];
+    $is_featured = $_POST['is_featured'] === "true" ? true : false; 
 
-        $this->model->addNews($title, $slug, $image_url, $content, $category, $is_featured);
-    }
-
+    $this->model->addNews($title, $slug, $image_url, $content, $category, $is_featured);
+}
     public function generateSlug($title) {
-        // Chuyển về chữ thường
         $slug = strtolower($title);
 
-        // Loại bỏ dấu tiếng Việt
         $slug = preg_replace('/(á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ)/', 'a', $slug);
         $slug = preg_replace('/(é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ)/', 'e', $slug);
         $slug = preg_replace('/(í|ì|ỉ|ĩ|ị)/', 'i', $slug);
@@ -51,13 +48,10 @@ class AdminController {
         $slug = preg_replace('/(ý|ỳ|ỷ|ỹ|ỵ)/', 'y', $slug);
         $slug = preg_replace('/(đ)/', 'd', $slug);
 
-        // Loại bỏ ký tự đặc biệt
         $slug = preg_replace('/[^a-z0-9\s-]/', '', $slug);
 
-        // Thay khoảng trắng và dấu gạch dưới bằng dấu gạch nối
         $slug = preg_replace('/[\s-]+/', '-', $slug);
 
-        // Loại bỏ dấu gạch nối thừa ở đầu và cuối
         $slug = trim($slug, '-');
 
         return $slug;
@@ -70,15 +64,15 @@ class AdminController {
     }
 
     public function editNews() {
-        $id = $_POST['id'];
-        $title = $_POST['title'];
-        $image_url = $_POST['image_url'];
-        $content = $_POST['content'];
-        $category = $_POST['category'];
-        $is_featured = isset($_POST['is_featured']) ? 1 : 0;  // Kiểm tra xem checkbox có được chọn không
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $image_url = $_POST['image_url'];
+    $content = $_POST['content'];
+    $category = $_POST['category'];
+    $is_featured = $_POST['is_featured'] === "true" ? true : false;
 
-        $this->model->editNews($id, $title, $image_url, $content, $category, $is_featured);
-    }
+    $this->model->editNews($id, $title, $image_url, $content, $category, $is_featured);
+}
 
     public function getNewsByCategory($category) {
         return $this->model->getNewsByCategory($category);

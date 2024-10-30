@@ -154,7 +154,7 @@ form {
 }
 
 form label {
-    display: block;
+    display: inline-block;
     margin-bottom: 5px;
     font-weight: bold;
 }

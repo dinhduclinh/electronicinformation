@@ -9,13 +9,6 @@ class NewsModel {
         $this->conn = $database->getConnection();
     }
 
-    // Lấy tất cả tin tức
-    public function getNews() {
-    $query = "SELECT * FROM news ORDER BY published_date DESC LIMIT 6";
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
 
     // Lấy tin tức theo ID
     public function getNewsById($id) {

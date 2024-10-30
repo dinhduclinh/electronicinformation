@@ -14,7 +14,6 @@ $footerController = new FooterController($adminController->model->getConnection(
 
 // Khởi tạo biến $categories
 $categories = [
-    'news' => 'Tin nổi bật',
     'latest_news' => 'Tin mới',
     'du_lich_dich_vu' => 'Du Lịch - Dịch Vụ',
     'thong_tin_quy_hoach' => 'Thông Tin Quy Hoạch',
@@ -40,6 +39,7 @@ function loadAllNewsContent($adminController) {
             <th>Hình ảnh</th>
             <th>Nội dung</th>
             <th>Ngày đăng</th>
+            <th>Tin nổi bật</th> <!-- Thêm cột này -->
             <th>Hành động</th>
         </tr>
     </thead>
@@ -53,6 +53,7 @@ function loadAllNewsContent($adminController) {
                     width="100"></td>
             <td class="content-cell"><?= htmlspecialchars($item['content']) ?></td>
             <td><?= isset($item['published_date']) ? $item['published_date'] : '' ?></td>
+            <td><?= $item['is_featured'] ? 'Có' : 'Không' ?></td> <!-- Thêm cột này -->
             <td>
                 <div class="action-buttons">
                     <button class="edit-btn" data-id="<?= $item['id'] ?>"
@@ -136,7 +137,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     <?php endforeach; ?>
                 </select>
                 <label for="is_featured">Tin nổi bật:</label>
-                <input type="checkbox" id="is_featured" name="is_featured" value="1">
+                <input type="checkbox" id="is_featured" name="is_featured" value="true">
                 <button type="submit">Thêm</button>
             </form>
         </div>
@@ -161,7 +162,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     <label for="editContent">Nội dung:</label>
                     <textarea id="editContent" name="content" rows="4"></textarea>
                     <label for="editIsFeatured">Tin nổi bật:</label>
-                    <input type="checkbox" id="editIsFeatured" name="is_featured" value="1">
+                    <input type="checkbox" id="editIsFeatured" name="is_featured" value="true">
                     <button type="submit">Lưu</button>
                 </form>
             </div>

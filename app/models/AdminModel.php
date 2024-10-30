@@ -36,38 +36,34 @@ class AdminModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Thêm tin mới
-    public function addNews($title, $slug, $image_url, $content, $category, $is_featured) {
-        $sql = "INSERT INTO $category (title, url, image_url, content, published_date, is_featured) VALUES (?, ?, ?, ?, NOW(), ?)";
+   public function addNews($title, $slug, $image_url, $content, $category, $is_featured) {
+    $sql = "INSERT INTO $category (title, url, image_url, content, published_date, is_featured) VALUES (?, ?, ?, ?, NOW(), ?)";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(1, $title, PDO::PARAM_STR);
+    $stmt->bindParam(2, $slug, PDO::PARAM_STR);
+    $stmt->bindParam(3, $image_url, PDO::PARAM_STR);
+    $stmt->bindParam(4, $content, PDO::PARAM_STR);
+    $stmt->bindParam(5, $is_featured, PDO::PARAM_BOOL);
+    return $stmt->execute();
+}
+
+public function editNews($id, $title, $image_url, $content, $category, $is_featured) {
+    try {
+        // Tạo slug từ tiêu đề
+        $slug = $this->generateSlug($title);
+        $sql = "UPDATE $category SET title = ?, url = ?, image_url = ?, content = ?, is_featured = ? WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $title, PDO::PARAM_STR);
-        $stmt->bindParam(2, $slug, PDO::PARAM_STR);
+        $stmt->bindParam(2, $slug, PDO::PARAM_STR); // Cập nhật thành slug
         $stmt->bindParam(3, $image_url, PDO::PARAM_STR);
         $stmt->bindParam(4, $content, PDO::PARAM_STR);
-        $stmt->bindParam(5, $is_featured, PDO::PARAM_INT);
+        $stmt->bindParam(5, $is_featured, PDO::PARAM_BOOL);
+        $stmt->bindParam(6, $id, PDO::PARAM_INT);
         return $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
-
-    // Sửa tin tức
-    public function editNews($id, $title, $image_url, $content, $category, $is_featured) {
-        try {
-            // Tạo slug từ tiêu đề
-            $slug = $this->generateSlug($title);
-
-            $sql = "UPDATE $category SET title = ?, url = ?, image_url = ?, content = ?, is_featured = ? WHERE id = ?";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(1, $title, PDO::PARAM_STR);
-            $stmt->bindParam(2, $slug, PDO::PARAM_STR); // Cập nhật thành slug
-            $stmt->bindParam(3, $image_url, PDO::PARAM_STR);
-            $stmt->bindParam(4, $content, PDO::PARAM_STR);
-            $stmt->bindParam(5, $is_featured, PDO::PARAM_INT);
-            $stmt->bindParam(6, $id, PDO::PARAM_INT);
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-
+}
     public function generateSlug($title) {
         // Chuyển về chữ thường
         $slug = strtolower($title);
@@ -104,7 +100,7 @@ class AdminModel {
     // Lấy tất cả các tin tức từ tất cả các bảng
     public function getAllNews() {
         $categories = [
-            'news', 'latest_news', 'du_lich_dich_vu', 'thong_tin_quy_hoach',
+            'latest_news', 'du_lich_dich_vu', 'thong_tin_quy_hoach',
             'cai_cach_hanh_chinh', 'pho_bien_phap_luat', 'thong_tin_tin_tuc', 'van_hoa_xa_hoi',
             'quoc_phong_an_ninh', 'kinh_te'
         ];
@@ -130,7 +126,7 @@ class AdminModel {
     public function getNewsBySlug($slug) {
         // Danh sách các bảng cần kiểm tra
         $categories = [
-            'news', 'latest_news', 'du_lich_dich_vu', 'thong_tin_quy_hoach',
+            'latest_news', 'du_lich_dich_vu', 'thong_tin_quy_hoach',
             'cai_cach_hanh_chinh', 'pho_bien_phap_luat', 'thong_tin_tin_tuc', 'van_hoa_xa_hoi',
             'quoc_phong_an_ninh', 'kinh_te'
         ];
