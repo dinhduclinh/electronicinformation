@@ -18,22 +18,26 @@ if (isset($_GET['slug'])) {
     <title><?php echo isset($news['title']) ? $news['title'] : 'Không tìm thấy bài viết'; ?></title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/importheader.css">
+    <link rel="stylesheet" href="css/rightsidebar.css">
 </head>
 
 <body class="gioithieu-body">
-
     <?php include '../app/views/header.php'; ?>
 
-    <div class="gioithieu-container">
-        <?php
-        if ($news) {
-    echo "<h1 class='gioithieu-title'>" . htmlspecialchars($news['title']) . "</h1>";
-    echo "<div class='gioithieu-text'>" . nl2br($news['content']) . "</div>";
-} else {
-    echo "<p>Không tìm thấy bài viết.</p>";
-}
-        ?>
-        <a href="http://localhost/ProjectOJT/public/">Trở lại</a>
+    <div class="main-content">
+        <div class="gioithieu-content">
+            <?php
+            if ($news) {
+                echo "<h1 class='gioithieu-title'>" . htmlspecialchars($news['title']) . "</h1>";
+                echo "<div class='gioithieu-text'>" . nl2br($news['content']) . "</div>";
+            } else {
+                echo "<p>Không tìm thấy bài viết.</p>";
+            }
+            ?>
+            <a href="index.php">Trở lại</a>
+        </div>
+
+        <?php include 'htmlsidebar.php'; ?>
     </div>
 
     <?php include '../app/views/footer.php'; ?>

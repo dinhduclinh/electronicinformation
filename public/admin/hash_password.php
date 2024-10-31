@@ -1,3 +1,4 @@
+<!-- /public/admin/hash_password.php -->
 <?php
 // Nhập mật khẩu bạn muốn mã hóa
 $password = '123';

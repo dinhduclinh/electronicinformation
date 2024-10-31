@@ -106,7 +106,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản trị tin tức</title>
+    <title>Quản trị</title>
     <link rel="stylesheet" href="css/admin.css">
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 </head>
@@ -123,7 +123,9 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <!-- Form thêm mới (ẩn đi ban đầu) -->
         <div id="addNewsForm" style="display: none;">
             <form action="admin.php" method="post">
-                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="action" value="add"><br>
+                <label for="is_featured">Tin nổi bật</label>
+                <input type="checkbox" id="is_featured" name="is_featured" value="true"><br><br>
                 <label for="title">Tiêu đề:</label>
                 <input type="text" id="title" name="title" required>
                 <label for="image_url">URL hình ảnh:</label>
@@ -136,8 +138,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     <option value="<?= htmlspecialchars($key) ?>"><?= htmlspecialchars($value) ?></option>
                     <?php endforeach; ?>
                 </select>
-                <label for="is_featured">Tin nổi bật:</label>
-                <input type="checkbox" id="is_featured" name="is_featured" value="true">
                 <button type="submit">Thêm</button>
             </form>
         </div>

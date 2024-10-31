@@ -498,3 +498,18 @@ footer {
 .news-list li a:hover {
     color: #b62218; 
 }
+
+.imgtt {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.imgtt img {
+    width: 100%; 
+    height: auto; 
+    margin: 0 auto;
+    object-fit: cover; 
+    max-height: 400px; 
+}

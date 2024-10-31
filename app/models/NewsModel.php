@@ -40,7 +40,7 @@ class NewsModel {
     }
 
     public function getFeaturedNewsByCategory($category) {
-        $query = "SELECT * FROM $category WHERE is_featured = 1 ORDER BY published_date DESC LIMIT 6";
+        $query = "SELECT * FROM $category WHERE is_featured = 1 ORDER BY published_date DESC LIMIT 2";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

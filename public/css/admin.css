@@ -92,6 +92,11 @@ body {
     background-color: #ddd;
 }
 
+#addNewsForm img {
+    width: 600px;
+    height: 360px;
+}
+
 .action-buttons {
     display: flex;
     gap: 10px;
@@ -130,7 +135,7 @@ body {
 }
 
 .modal-content img {
-    width: 500px;
+    width: 600px;
     height: 360px;
 }
 
@@ -163,18 +168,16 @@ form input[type="text"],
 form input[type="url"],
 form select,
 form textarea {
-    /* Thêm textarea cho nội dung */
     width: 98%;
     padding: 10px;
-    margin-bottom: 10px; /* Thay đổi margin-bottom cho nhất quán */
+    margin-bottom: 10px; 
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
 }
 
 form textarea {
-    /* Thêm kiểu dáng cho textarea */
-    min-height: 100px; /* Đặt chiều cao tối thiểu cho textarea */
+    min-height: 100px; 
 }
 
 form button[type="submit"] {
@@ -192,10 +195,9 @@ form button[type="submit"]:hover {
     background-color: #218838;
 }
 
-/* Thêm CSS để hiển thị nội dung dài quá một số ký tự nhất định thì hiển thị dấu ... */
 .content table td.content-cell {
-    max-width: 200px; /* Đặt giới hạn chiều rộng tối đa */
-    white-space: nowrap; /* Ngăn ngừng xuống dòng */
-    overflow: hidden; /* Ẩn phần nội dung vượt quá chiều rộng */
-    text-overflow: ellipsis; /* Hiển thị dấu ... khi nội dung vượt quá chiều rộng */
+    max-width: 200px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }

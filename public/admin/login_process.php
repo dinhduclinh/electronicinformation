@@ -2,6 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 require_once __DIR__ . '../../../app/models/UserModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -22,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Kiểm tra tên người dùng và mật khẩu
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['full_name'] = $user['full_name']; // Lưu full_name vào session
         header('Location: ../admin.php');
     } else {
         $_SESSION['error'] = 'Tên đăng nhập hoặc mật khẩu không đúng!';
