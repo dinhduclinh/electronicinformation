@@ -93,7 +93,7 @@ class NewsController {
             }
         }
 
-        return $featuredNews;
+        return array_slice($featuredNews,0,6);
     }
 }
 ?>

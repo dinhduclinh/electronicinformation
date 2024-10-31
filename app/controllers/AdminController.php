@@ -28,15 +28,15 @@ class AdminController {
     }
 
     public function addNews() {
-    $title = $_POST['title'];
-    $slug = $this->generateSlug($title);  
-    $image_url = $_POST['image_url'];
-    $content = $_POST['content'];
-    $category = $_POST['category'];
-    $is_featured = $_POST['is_featured'] === "true" ? true : false; 
-
-    $this->model->addNews($title, $slug, $image_url, $content, $category, $is_featured);
-}
+        $title = $_POST['title'];
+        $slug = $this->generateSlug($title);  
+        $image_url = $_POST['image_url'];
+        $content = $_POST['content'];
+        $category = $_POST['category'];
+        $is_featured = $_POST['is_featured'] === "true" ? true : false;
+        $excerpt = $_POST['excerpt'];
+        $this->model->addNews($title, $slug, $image_url, $content, $category, $is_featured, $excerpt);
+    }
     public function generateSlug($title) {
         $slug = strtolower($title);
 
@@ -64,15 +64,16 @@ class AdminController {
     }
 
     public function editNews() {
-    $id = $_POST['id'];
-    $title = $_POST['title'];
-    $image_url = $_POST['image_url'];
-    $content = $_POST['content'];
-    $category = $_POST['category'];
-    $is_featured = $_POST['is_featured'] === "true" ? true : false;
-
-    $this->model->editNews($id, $title, $image_url, $content, $category, $is_featured);
-}
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $image_url = $_POST['image_url'];
+        $content = $_POST['content'];
+        $category = $_POST['category'];
+        $is_featured = $_POST['is_featured'] === "true" ? true : false;
+        $excerpt = $_POST['excerpt'];
+        $oldCategory = $_POST['oldCategory']; // Lấy danh mục cũ từ form
+        $this->model->editNews($id, $title, $image_url, $content, $category, $is_featured, $excerpt, $oldCategory);
+    }
 
     public function getNewsByCategory($category) {
         return $this->model->getNewsByCategory($category);

@@ -28,42 +28,60 @@ class AdminModel {
     }
 
     // Lấy tin tức theo ID
-    public function getNewsById($id) {
-        $sql = "SELECT *, 'news' AS category FROM news WHERE id = ?"; // Thêm 'news' AS category
+    public function getNewsById($id, $category) {
+        $sql = "SELECT *, '$category' AS category FROM $category WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-   public function addNews($title, $slug, $image_url, $content, $category, $is_featured) {
-    $sql = "INSERT INTO $category (title, url, image_url, content, published_date, is_featured) VALUES (?, ?, ?, ?, NOW(), ?)";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bindParam(1, $title, PDO::PARAM_STR);
-    $stmt->bindParam(2, $slug, PDO::PARAM_STR);
-    $stmt->bindParam(3, $image_url, PDO::PARAM_STR);
-    $stmt->bindParam(4, $content, PDO::PARAM_STR);
-    $stmt->bindParam(5, $is_featured, PDO::PARAM_BOOL);
-    return $stmt->execute();
-}
-
-public function editNews($id, $title, $image_url, $content, $category, $is_featured) {
-    try {
-        // Tạo slug từ tiêu đề
-        $slug = $this->generateSlug($title);
-        $sql = "UPDATE $category SET title = ?, url = ?, image_url = ?, content = ?, is_featured = ? WHERE id = ?";
+    
+   public function addNews($title, $slug, $image_url, $content, $category, $is_featured, $excerpt) {
+        $sql = "INSERT INTO $category (title, url, image_url, content, published_date, is_featured, excerpt) VALUES (?, ?, ?, ?, NOW(), ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(1, $title, PDO::PARAM_STR);
-        $stmt->bindParam(2, $slug, PDO::PARAM_STR); // Cập nhật thành slug
+        $stmt->bindParam(2, $slug, PDO::PARAM_STR);
         $stmt->bindParam(3, $image_url, PDO::PARAM_STR);
         $stmt->bindParam(4, $content, PDO::PARAM_STR);
         $stmt->bindParam(5, $is_featured, PDO::PARAM_BOOL);
-        $stmt->bindParam(6, $id, PDO::PARAM_INT);
+        $stmt->bindParam(6, $excerpt, PDO::PARAM_STR);
         return $stmt->execute();
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
-}
+
+public function deleteNewsFromOldCategory($id, $oldCategory) {
+        $sql = "DELETE FROM $oldCategory WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function editNews($id, $title, $image_url, $content, $category, $is_featured, $excerpt, $oldCategory) {
+        try {
+            
+            $news = $this->getNewsById($id, $oldCategory);
+            $published_date = $news['published_date'];
+
+            
+            $this->deleteNewsFromOldCategory($id, $oldCategory);
+
+            
+            $slug = $this->generateSlug($title);
+            $sql = "INSERT INTO $category (id, title, url, image_url, content, is_featured, excerpt, published_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(1, $id, PDO::PARAM_INT);
+            $stmt->bindParam(2, $title, PDO::PARAM_STR);
+            $stmt->bindParam(3, $slug, PDO::PARAM_STR);
+            $stmt->bindParam(4, $image_url, PDO::PARAM_STR);
+            $stmt->bindParam(5, $content, PDO::PARAM_STR);
+            $stmt->bindParam(6, $is_featured, PDO::PARAM_BOOL);
+            $stmt->bindParam(7, $excerpt, PDO::PARAM_STR);
+            $stmt->bindParam(8, $published_date, PDO::PARAM_STR);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
     public function generateSlug($title) {
         // Chuyển về chữ thường
         $slug = strtolower($title);

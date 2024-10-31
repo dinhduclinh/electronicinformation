@@ -201,3 +201,9 @@ form button[type="submit"]:hover {
     overflow: hidden; 
     text-overflow: ellipsis;
 }
+.excerpt-cell {
+    max-width: 200px; /* Giới hạn chiều rộng tối đa */
+    white-space: nowrap; /* Ngăn ngừng xuống dòng */
+    overflow: hidden; /* Ẩn phần vượt quá chiều rộng */
+    text-overflow: ellipsis; /* Hiển thị dấu chấm ba (...) khi văn bản vượt quá chiều rộng */
+}

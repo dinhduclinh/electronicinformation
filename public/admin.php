@@ -38,8 +38,9 @@ function loadAllNewsContent($adminController) {
             <th>URL</th>
             <th>Hình ảnh</th>
             <th>Nội dung</th>
+            <th>Trích dẫn</th> <!-- Thêm cột này -->
             <th>Ngày đăng</th>
-            <th>Tin nổi bật</th> <!-- Thêm cột này -->
+            <th>Tin nổi bật</th>
             <th>Hành động</th>
         </tr>
     </thead>
@@ -52,8 +53,9 @@ function loadAllNewsContent($adminController) {
             <td><img src="<?= isset($item['image_url']) ? htmlspecialchars($item['image_url']) : '' ?>" alt="Image"
                     width="100"></td>
             <td class="content-cell"><?= htmlspecialchars($item['content']) ?></td>
+            <td class="excerpt-cell"><?= htmlspecialchars($item['excerpt']) ?></td> <!-- Thêm cột này -->
             <td><?= isset($item['published_date']) ? $item['published_date'] : '' ?></td>
-            <td><?= $item['is_featured'] ? 'Có' : 'Không' ?></td> <!-- Thêm cột này -->
+            <td><?= $item['is_featured'] ? 'Có' : 'Không' ?></td>
             <td>
                 <div class="action-buttons">
                     <button class="edit-btn" data-id="<?= $item['id'] ?>"
@@ -130,6 +132,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 <input type="text" id="title" name="title" required>
                 <label for="image_url">URL hình ảnh:</label>
                 <input type="text" id="image_url" name="image_url" required>
+                <label for="excerpt">Trích dẫn:</label>
+                <textarea id="excerpt" name="excerpt" rows="4"></textarea>
                 <label for="content">Nội dung:</label>
                 <textarea id="content" name="content" rows="6"></textarea>
                 <label for="category">Danh mục:</label>
@@ -154,13 +158,21 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 <form action="admin.php" method="post">
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" id="editId" name="id">
-                    <input type="hidden" id="editCategory" name="category">
+                    <input type="hidden" id="oldCategory" name="oldCategory"> <!-- Thêm trường ẩn này -->
                     <label for="editTitle">Tiêu đề:</label>
                     <input type="text" id="editTitle" name="title" required>
                     <label for="editImageUrl">URL hình ảnh:</label>
                     <input type="text" id="editImageUrl" name="image_url">
+                    <label for="editExcerpt">Trích dẫn:</label>
+                    <textarea id="editExcerpt" name="excerpt" rows="4"></textarea>
                     <label for="editContent">Nội dung:</label>
                     <textarea id="editContent" name="content" rows="4"></textarea>
+                    <label for="editCategory">Danh mục:</label>
+                    <select id="editCategory" name="category" required>
+                        <?php foreach ($categories as $key => $value): ?>
+                        <option value="<?= htmlspecialchars($key) ?>"><?= htmlspecialchars($value) ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <label for="editIsFeatured">Tin nổi bật:</label>
                     <input type="checkbox" id="editIsFeatured" name="is_featured" value="true">
                     <button type="submit">Lưu</button>
