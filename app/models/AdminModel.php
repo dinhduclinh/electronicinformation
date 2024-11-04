@@ -13,12 +13,10 @@ class AdminModel {
         }
     }
 
-    // Phương thức công khai để truy cập kết nối cơ sở dữ liệu
     public function getConnection() {
         return $this->conn;
     }
 
-    // Lấy danh sách tin tức theo danh mục
     public function getNewsByCategory($category) {
         $sql = "SELECT * FROM $category ORDER BY published_date DESC";  // Dùng tên bảng theo danh mục
         $stmt = $this->conn->prepare($sql);
@@ -27,7 +25,6 @@ class AdminModel {
         return $result;
     }
 
-    // Lấy tin tức theo ID
     public function getNewsById($id, $category) {
         $sql = "SELECT *, '$category' AS category FROM $category WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
@@ -83,10 +80,9 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
     }
     
     public function generateSlug($title) {
-        // Chuyển về chữ thường
+  
         $slug = strtolower($title);
 
-        // Loại bỏ dấu tiếng Việt
         $slug = preg_replace('/(á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ)/', 'a', $slug);
         $slug = preg_replace('/(é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ)/', 'e', $slug);
         $slug = preg_replace('/(í|ì|ỉ|ĩ|ị)/', 'i', $slug);
@@ -95,13 +91,10 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
         $slug = preg_replace('/(ý|ỳ|ỷ|ỹ|ỵ)/', 'y', $slug);
         $slug = preg_replace('/(đ)/', 'd', $slug);
 
-        // Loại bỏ ký tự đặc biệt
         $slug = preg_replace('/[^a-z0-9\s-]/', '', $slug);
 
-        // Thay khoảng trắng và dấu gạch dưới bằng dấu gạch nối
         $slug = preg_replace('/[\s-]+/', '-', $slug);
 
-        // Loại bỏ dấu gạch nối thừa ở đầu và cuối
         $slug = trim($slug, '-');
 
         return $slug;

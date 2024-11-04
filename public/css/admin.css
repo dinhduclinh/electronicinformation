@@ -17,6 +17,7 @@ body {
 .sidebar h2 {
     margin-bottom: 20px;
 }
+
 .sidebar h2 a {
     text-decoration: none;
     color: #fff;
@@ -25,7 +26,6 @@ body {
     border-radius: 5px;
     font-size: 18px;
 }
-
 
 .sidebar ul {
     list-style: none;
@@ -132,6 +132,7 @@ body {
     border: 1px solid #888;
     max-width: 1040px;
     max-height: 100%;
+    overflow-y: auto; /* Thêm thuộc tính này để cho phép cuộn nếu nội dung quá dài */
 }
 
 .modal-content img {
@@ -170,14 +171,14 @@ form select,
 form textarea {
     width: 98%;
     padding: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
 }
 
 form textarea {
-    min-height: 100px; 
+    min-height: 100px;
 }
 
 form button[type="submit"] {
@@ -197,13 +198,66 @@ form button[type="submit"]:hover {
 
 .content table td.content-cell {
     max-width: 200px;
-    white-space: nowrap; 
-    overflow: hidden; 
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .excerpt-cell {
-    max-width: 200px; /* Giới hạn chiều rộng tối đa */
-    white-space: nowrap; /* Ngăn ngừng xuống dòng */
-    overflow: hidden; /* Ẩn phần vượt quá chiều rộng */
-    text-overflow: ellipsis; /* Hiển thị dấu chấm ba (...) khi văn bản vượt quá chiều rộng */
+    max-width: 200px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+
+/* Thêm CSS cho danh sách hình ảnh */
+#imageList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.image-item {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+    position: relative; /* Thêm thuộc tính này để đặt nút xóa ở vị trí tương đối */
+}
+
+.image-item:hover {
+    transform: scale(1.1);
+}
+
+.image-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* Thêm CSS cho nút xóa */
+.delete-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgb(95, 92, 92);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1; /* Đảm bảo nút xóa hiển thị trên hình ảnh */
+}
+
+.delete-image-btn:hover {
+    background-color: darkred;
 }

@@ -119,7 +119,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <h3>
             <a href="http://localhost/ProjectOJT/public/">Xem trang</a>
         </h3>
-        <h2 id=" category-title">Tất cả bài viết</h2>
+        <h2 id="category-title">Tất cả bài viết</h2>
         <!-- Nút thêm mới -->
         <button id="addNewBtn">Thêm mới</button>
         <!-- Form thêm mới (ẩn đi ban đầu) -->
@@ -130,7 +130,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 <input type="checkbox" id="is_featured" name="is_featured" value="true"><br><br>
                 <label for="title">Tiêu đề:</label>
                 <input type="text" id="title" name="title" required>
-                <label for="image_url">URL hình ảnh:</label>
+                <label for="image_url">Hình ảnh:</label>
+                <button type="button" id="uploadImageBtn">Chọn Hình Ảnh</button>
                 <input type="text" id="image_url" name="image_url" required>
                 <label for="excerpt">Trích dẫn:</label>
                 <textarea id="excerpt" name="excerpt" rows="4"></textarea>
@@ -161,7 +162,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     <input type="hidden" id="oldCategory" name="oldCategory"> <!-- Thêm trường ẩn này -->
                     <label for="editTitle">Tiêu đề:</label>
                     <input type="text" id="editTitle" name="title" required>
-                    <label for="editImageUrl">URL hình ảnh:</label>
+                    <label for="editImageUrl">Hình ảnh:</label>
+                    <button type="button" id="editUploadImageBtn">Chọn Hình Ảnh</button>
                     <input type="text" id="editImageUrl" name="image_url">
                     <label for="editExcerpt">Trích dẫn:</label>
                     <textarea id="editExcerpt" name="excerpt" rows="4"></textarea>
@@ -193,6 +195,17 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     <button type="submit">Xóa</button>
                     <button type="button" id="cancelDelete">Hủy</button>
                 </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal chọn hình ảnh -->
+    <div id="imageModal" class="modal">
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <span class="close" id="closeImageModal">&times;</span>
+                <h3>Tất cả hình ảnh</h3>
+                <div id="imageList"></div>
+                <button type="button" id="uploadNewImageBtn">Thêm mới</button>
             </div>
         </div>
     </div>
