@@ -1,3 +1,4 @@
+<!-- /public/sidebar.php -->
 <?php
 
 // Lấy full_name từ session
@@ -12,5 +13,6 @@ $full_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : 'Khách';
         <li><a href="edit_footer.php">Chân trang</a></li>
         <li><a href="admin.php">Bài viết</a></li>
         <li><a href="create_user.php">Tài khoản</a></li>
+        <li><a href="documents.php">Văn bản điều hành</a></li>
     </ul>
 </div>
