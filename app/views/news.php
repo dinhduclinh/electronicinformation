@@ -13,6 +13,7 @@ session_start();
     <link rel="stylesheet" href="../public/css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../public/js/script.js"></script>
+    <script src="../public/js/documentview.js"></script>
 </head>
 
 <body>
@@ -71,28 +72,31 @@ session_start();
             </div>
 
             <div class="right-sidebar">
-                <div class="category-list">
-                    <button>Công tác Đảng</button>
-                    <button>Công tác chính quyền</button>
-                    <button>MTTQ và các đoàn thể</button>
-                    <button>Giáo dục - Đào tạo</button>
-                    <button>Cải cách hành chính</button>
-                    <button>Tuyên truyền pháp luật</button>
-                    <button>Danh sách xã - thị trấn</button>
-                    <button>Văn bản điều hành</button>
-                </div>
                 <div class="imgtt">
-                    <a href="hoctap.php">
-                        <img src="https://storage-vnportal.vnpt.vn/nbh-ubnd/sitefolders/root/2303/banner/hoc_tap_tam_guong_20171127033904211210.jpg"
-                            alt="Middle Banner Image">
+                    <a
+                        href="https://login.ninhbinh.gov.vn/authenticationendpoint/login.do?client_id=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&commonAuthCallerPath=%2Foauth2%2Fauthorize&forceAuth=false&passiveAuth=false&redirect_uri=https%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%2Flogin.aspx&response_type=code&scope=openid&state=%7B%27requester%27%3A%27http%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%27%7D&tenantDomain=carbon.super&sessionDataKey=2b054744-c88f-49e7-8dfc-6f7c380be4a5&relyingParty=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&type=oidc&sp=NBH_SSO_IOFFICE&isSaaSApp=false&authenticators=BasicAuthenticator%3ALOCAL">
+                        <img src="../img/vanban.jpg" alt="Middle Banner Image">
                     </a>
-                    <a href="https://ninhbinh.gov.vn/">
-                        <img src="../img/congthongtin1.jpg" alt="Middle Banner Image">
+                    <a href="#">
+                        <img src="../img/dlnb.jpg" alt="Middle Banner Image">
                     </a>
-                    <a href="https://mail.ninhbinh.gov.vn/">
-                        <img src="../img/email.jpg" alt="Middle Banner Image">
-                    </a>
+
+
                 </div>
+                <div class="sidebar-section">
+                    <h3>Văn Bản Mới Ban Hành</h3>
+                    <div class="scrolling-documents">
+                        <ul id="documentList">
+                            <?php foreach ($documents as $doc): ?>
+                            <li><a href=""> <strong>Văn bản số:
+                                        <?php echo htmlspecialchars($doc['document_number']); ?></strong><br>
+                                    <?php echo htmlspecialchars($doc['excerpt']); ?>
+                                </a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -124,8 +128,11 @@ session_start();
                 <a href="https://dichvucong.ninhbinh.gov.vn/public/linkto/tra-cuu-thu-tuc-co-quan?">
                     <img src="../img/cst.jpg" alt="Middle Banner Image">
                 </a>
-                <a href="#">
-                    <img src="../img/dlnb.jpg" alt="Middle Banner Image">
+                <a href="https://ninhbinh.gov.vn/">
+                    <img src="../img/congthongtin1.jpg" alt="Middle Banner Image">
+                </a>
+                <a href="https://mail.ninhbinh.gov.vn/">
+                    <img src="../img/email.jpg" alt="Middle Banner Image">
                 </a>
                 <a
                     href="https://storage-vnportal.vnpt.vn/nbh-ubnd/sitefolders/root/vanban/2022/congkhaidonvitthc-cham-muon/100_phu_luc_danh_sach_ho_so_tre_han_-017_den_0102022-_.pdf">
@@ -134,9 +141,9 @@ session_start();
                 <a href="https://ninhbinh.gov.vn/Default.aspx?sname=ubnd-ninhbinh&sid=4&pageid=27172">
                     <img src="../img/vbpl.jpg" alt="Middle Banner Image">
                 </a>
-                <a
-                    href="https://login.ninhbinh.gov.vn/authenticationendpoint/login.do?client_id=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&commonAuthCallerPath=%2Foauth2%2Fauthorize&forceAuth=false&passiveAuth=false&redirect_uri=https%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%2Flogin.aspx&response_type=code&scope=openid&state=%7B%27requester%27%3A%27http%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%27%7D&tenantDomain=carbon.super&sessionDataKey=2b054744-c88f-49e7-8dfc-6f7c380be4a5&relyingParty=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&type=oidc&sp=NBH_SSO_IOFFICE&isSaaSApp=false&authenticators=BasicAuthenticator%3ALOCAL">
-                    <img src="../img/vanban.jpg" alt="Middle Banner Image">
+                <a href="hoctap.php">
+                    <img src="https://storage-vnportal.vnpt.vn/nbh-ubnd/sitefolders/root/2303/banner/hoc_tap_tam_guong_20171127033904211210.jpg"
+                        alt="Middle Banner Image">
                 </a>
                 <a href="https://vanban.chinhphu.vn/?pageid=27160&docid=171264&classid=1&typegroupid=1">
                     <img src="../img/hienphap.jpg" alt="Middle Banner Image">

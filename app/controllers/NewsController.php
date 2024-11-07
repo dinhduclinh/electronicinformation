@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/NewsModel.php';
+require_once __DIR__ . '/../controllers/DocumentController.php';
 
 class NewsController {
     public $model;
@@ -11,6 +12,8 @@ class NewsController {
     public function index() {
         // Lấy tin tức mới nhất
         $latestNews = $this->model->getLatestNews();
+        $documentController = new DocumentController();
+    $documents = $documentController->getSidebarDocuments();
         // Truyền dữ liệu vào view
         include __DIR__ . '/../views/news.php';
     }

@@ -67,7 +67,6 @@ $(document).ready(function () {
   startCarousel();
 });
 
-
     document.addEventListener("DOMContentLoaded", function() {
         var list = document.getElementById('latestNewsList');
         var listHeight = list.scrollHeight; 
@@ -95,7 +94,3 @@ $(document).ready(function () {
             scrolling = setInterval(autoScroll, speed);
         });
     });
-
-
-
-

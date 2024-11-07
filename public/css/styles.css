@@ -316,6 +316,78 @@ width: 100%;
     background-color: transparent; 
     margin-bottom: 0%;
 }
+.sidebar-section {
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar-section h3 {
+    font-size: 1.0em;
+    color: white;
+    background-color: #9b0f35;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    
+}
+
+.scrolling-documents {
+    max-height: 330px;
+    overflow-y: hidden;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+/* Document List Styling */
+#documentList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#documentList li {
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #333;
+}
+
+#documentList li strong {
+    color: black;
+    font-size: 14px;
+}
+
+#documentList li a {
+    color: black;
+    text-decoration: none;
+}
+
+#documentList li a:hover {
+    text-decoration: underline;
+}
+
+/* Custom scrollbar styling for WebKit browsers */
+.scrolling-documents::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrolling-documents::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.scrolling-documents::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.scrolling-documents::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox scrollbar styling */
+.scrolling-documents {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
 
 .category-list {
     list-style-type: none; 
@@ -502,7 +574,6 @@ footer {
 .imgtt {
     width: 100%;
     text-align: center;
-    margin: 10px 0;
     overflow: hidden;
 }
 

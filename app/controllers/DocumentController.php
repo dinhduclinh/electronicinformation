@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/DocumentModel.php';
 
+
 class DocumentController {
     public $model;
 
@@ -95,5 +96,12 @@ class DocumentController {
 
     public function getAllDocumentTypes() {
         return $this->model->getAllDocumentTypes();
+    }
+
+    public function getSidebarDocuments() {
+        $sql = "SELECT document_number, excerpt FROM documents ORDER BY issued_date DESC LIMIT 10";
+        $stmt = $this->model->getConnection()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
