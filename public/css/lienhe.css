@@ -1,4 +1,4 @@
-/* lienhe.css */
+
 * {
   margin: 0;
   padding: 0;
@@ -133,7 +133,6 @@
   background-color: #800000; 
 }
 
-/* Modal background overlay */
 .modal {
     display: none; 
     position: fixed;
@@ -142,24 +141,22 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Làm nền tối hơn */
-    backdrop-filter: blur(5px); /* Làm mờ background khi mở modal */
-    transition: opacity 0.3s ease; /* Hiệu ứng mờ khi hiển thị modal */
+    background-color: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(5px); 
+    transition: opacity 0.3s ease; 
 }
 
-/* Modal content box */
 .modal-content {
     background-color: #ffffff;
     margin: auto;
     padding: 20px;
-    border-radius: 8px; /* Góc bo tròn */
+    border-radius: 8px; 
     max-width: 500px;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
-    animation: slide-down 0.3s ease; /* Hiệu ứng slide khi hiện modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    animation: slide-down 0.3s ease; 
 }
 
-/* Close button */
 .close {
     color: #333;
     float: right;
@@ -170,11 +167,10 @@
 
 .close:hover,
 .close:focus {
-    color: #ff5c5c; /* Đổi màu khi hover */
+    color: #ff5c5c; 
     text-decoration: none;
 }
 
-/* Modal heading */
 .modal-content h2 {
     font-size: 24px;
     margin-bottom: 15px;
@@ -183,14 +179,12 @@
     color: #283f60;
 }
 
-/* Styling for the results content */
 #resultsContent {
     text-align: left;
     font-size: 16px;
     color: #555;
 }
 
-/* Animation for modal entrance */
 @keyframes slide-down {
     from {
         opacity: 0;

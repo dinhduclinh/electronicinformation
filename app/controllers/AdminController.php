@@ -71,7 +71,7 @@ class AdminController {
         $category = $_POST['category'];
         $is_featured = $_POST['is_featured'] === "true" ? true : false;
         $excerpt = $_POST['excerpt'];
-        $oldCategory = $_POST['oldCategory']; // Lấy danh mục cũ từ form
+        $oldCategory = $_POST['oldCategory']; 
         $this->model->editNews($id, $title, $image_url, $content, $category, $is_featured, $excerpt, $oldCategory);
     }
 
@@ -85,5 +85,13 @@ class AdminController {
 
     public function getAllNews() {
         return $this->model->getAllNews();
+    }
+
+    public function getAllCategories() {
+        return $this->model->getAllCategories();
+    }
+
+    public function editCategory($id, $name) {
+        return $this->model->editCategory($id, $name);
     }
 }

@@ -46,7 +46,7 @@ $users = $userController->getAllUsers();
     <?php include 'admin/sidebar.php'; ?>
     <div class="content">
         <h2>Tạo tài khoản mới</h2>
-        <form action="create_user.php" method="post">
+        <form action="create_user" method="post">
             <input type="hidden" name="action" value="create_user">
             <label for="username">Tên đăng nhập:</label>
             <input type="text" id="username" name="username" required>

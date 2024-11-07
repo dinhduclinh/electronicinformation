@@ -3,7 +3,7 @@ class VoteModel {
     private $db;
 
     public function __construct($dbConnection) {
-        $this->db = $dbConnection; // Khởi tạo kết nối cơ sở dữ liệu
+        $this->db = $dbConnection; 
     }
 
     public function getResults() {

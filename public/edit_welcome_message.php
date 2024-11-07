@@ -12,7 +12,6 @@ require_once '../app/controllers/AdminController.php';
 $adminController = new AdminController();
 $welcomeController = new WelcomeMessageController($adminController->model->getConnection());
 
-// Kiểm tra và xử lý cập nhật thông báo
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
     $newMessage = $_POST['message'];
     $welcomeController->updateWelcomeMessage($newMessage);
@@ -20,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
     exit;
 }
 
-// Lấy thông báo hiện tại
 $currentMessage = $welcomeController->getWelcomeMessage();
 ?>
 
@@ -42,7 +40,7 @@ $currentMessage = $welcomeController->getWelcomeMessage();
         <p class="success-message">Cập nhật thành công!</p>
         <?php endif; ?>
 
-        <form action="edit_welcome_message.php" method="post">
+        <form action="edit_welcome_message" method="post">
             <label for="message">Thông báo đầu trang:</label>
             <textarea id="message" name="message" rows="4"><?= htmlspecialchars($currentMessage) ?></textarea>
             <button type="submit">Cập nhật</button>

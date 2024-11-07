@@ -1,7 +1,6 @@
 <?php
 session_start();
-require_once '../app/controllers/VoteController.php'; // Đảm bảo đường dẫn đúng
-
+require_once '../app/controllers/VoteController.php'; 
 $controller = new VoteController(); 
 ?>
 
@@ -62,7 +61,7 @@ $controller = new VoteController();
                         <input type="radio" name="vote" value="5"> Quốc phòng - An ninh
                     </label><br>
                     <button type="submit">Bình chọn</button>
-                    <button type="button" id="resultsBtn">Kết quả</button> <!-- Thêm id để xử lý sự kiện -->
+                    <button type="button" id="resultsBtn">Kết quả</button>
                 </form>
             </div>
 

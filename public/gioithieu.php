@@ -16,15 +16,12 @@ session_start();
 </head>
 
 <body class="gioithieu-body">
-    <!-- Sử dụng class cho body -->
 
-    <!-- Include header -->
     <?php include '../app/views/header.php'; ?>
     <div class="main-content">
         <div class="gioithieu-content">
-            <!-- Nội dung trang Giới Thiệu -->
+
             <div class=" gioithieu-container">
-                <!-- Container cho nội dung -->
                 <h1 class="gioithieu-title">Giới thiệu về Ninh Bình</h1>
                 <p class="gioithieu-text">Kính gửi các quý vị độc giả, các du khách và nhà đầu tư:</p>
                 <p class="gioithieu-text">Trước tiên xin được gửi lời chào trân trọng, lời chúc sức khỏe, hạnh phúc và
@@ -59,14 +56,11 @@ session_start();
                     trị
                     khởi nguyên trong hành trình phục hưng dân tộc. </p>
 
-                <!-- Thêm hình ảnh nếu cần -->
                 <figure class="gioithieu-image-section">
                     <img src=" https://media.truyenhinhdulich.vn/upload/news/7_2021/26007_den_vua_dinh_09194027072021.jpg"
                         alt="Hình ảnh Ninh Bình">
-                    <!-- Cập nhật đường dẫn hình ảnh -->
                     <figcaption class="gioithieu-caption"><strong><em>Đền thờ vua Đinh Tiên Hoàng</em></strong>
                     </figcaption>
-                    <!-- Ghi chú thích hình ảnh -->
                 </figure><br>
                 <p class="gioithieu-text"> Qua bao thăng trầm của lịch sử, từ thời kỳ nhà Đinh cho tới nhà Nguyễn Tây
                     Sơn,

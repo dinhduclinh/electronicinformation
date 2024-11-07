@@ -10,7 +10,6 @@ require_once '../app/controllers/DocumentController.php';
 
 $documentController = new DocumentController();
 
-// Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'add':
@@ -27,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     exit;
 }
 
-// Handle edit action
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $id = $_GET['id'];
     if ($_GET['action'] === 'edit') {
@@ -57,11 +55,10 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     <?php include 'admin/sidebar.php'; ?>
     <div class="content">
         <h2>Quản lý văn bản điều hành</h2>
-        <!-- Nút thêm mới -->
         <button id="addNewBtn">Thêm mới</button>
-        <!-- Form thêm mới (ẩn đi ban đầu) -->
+
         <div id="addDocumentForm" style="display: none;">
-            <form action="documents.php" method="post" enctype="multipart/form-data">
+            <form action="documents" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="add"><br>
                 <label for="document_number">Số hiệu văn bản:</label>
                 <input type="text" id="document_number" name="document_number" required><br><br>
@@ -86,7 +83,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             <?php
             function loadAllDocumentsContent($documentController) {
                 $documents = $documentController->getAllDocuments();
-                $stt = 1; // Biến đếm số thứ tự
+                $stt = 1; 
                 ob_start();
             ?>
             <table>
@@ -139,13 +136,13 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             ?>
         </div>
     </div>
-    <!-- Modal sửa văn bản -->
+
     <div id="editDocumentModal" class="modal">
         <div class="modal-overlay">
             <div class="modal-content">
                 <span class="close" id="closeEditModal">&times;</span>
                 <h3>Chỉnh sửa văn bản</h3>
-                <form action="documents.php" method="post" enctype="multipart/form-data">
+                <form action="documents" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" id="editId" name="id">
                     <label for="editDocumentNumber">Số hiệu văn bản:</label>
@@ -155,7 +152,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                     <label for="editExcerpt">Trích dẫn:</label>
                     <textarea id="editExcerpt" name="excerpt" rows="4"></textarea><br><br>
                     <label for="editAttachmentUrl">Tệp đính kèm:</label>
-                    <span id="editAttachmentUrlDisplay"></span> <!-- Hiển thị đường dẫn tệp đính kèm -->
+                    <span id="editAttachmentUrlDisplay"></span>
                     <input type="file" id="editAttachmentUrl" name="attachment_url" accept="application/pdf"><br><br>
                     <label for="editSigner">Người ký:</label>
                     <input type="text" id="editSigner" name="signer" required><br><br>
@@ -174,13 +171,13 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             </div>
         </div>
     </div>
-    <!-- Modal xác nhận xóa -->
+
     <div id="deleteDocumentModal" class="modal">
         <div class="modal-overlay">
             <div class="modal-content">
                 <span class="close" id="closeDeleteDocumentModal">&times;</span>
                 <p>Bạn chắc chắn muốn xóa văn bản này?</p>
-                <form action="documents.php" method="post">
+                <form action="documents" method="post">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" id="deleteDocumentId" name="id">
                     <button type="submit">Xóa</button>

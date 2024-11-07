@@ -45,5 +45,21 @@ class NewsModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+// Lấy danh mục theo ID
+    public function getCateById($id) {
+        $sql = "SELECT * FROM cate WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(1, $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
+    // Lấy tất cả danh mục
+    public function getAllCates() {
+        $sql = "SELECT * FROM cate";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

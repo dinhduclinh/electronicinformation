@@ -1,5 +1,16 @@
 <?php
 session_start();
+require_once __DIR__ . '/../controllers/DocumentController.php';
+$documentController = new DocumentController();
+$documents = $documentController->getAllDocuments();
+require_once __DIR__ . '/../controllers/NewsController.php';
+$newsController = new NewsController();
+
+$categories = $newsController->getAllCates();
+$categoryMap = [];
+foreach ($categories as $category) {
+    $categoryMap[$category['id']] = $category['name'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,23 +83,22 @@ session_start();
             </div>
 
             <div class="right-sidebar">
+                <div class="category-list">
+                    <button>Công tác Đảng</button>
+                    <button>Giáo dục - Đào tạo</button>
+                    <button>Danh sách xã - thị trấn</button>
+                </div>
                 <div class="imgtt">
-                    <a
-                        href="https://login.ninhbinh.gov.vn/authenticationendpoint/login.do?client_id=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&commonAuthCallerPath=%2Foauth2%2Fauthorize&forceAuth=false&passiveAuth=false&redirect_uri=https%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%2Flogin.aspx&response_type=code&scope=openid&state=%7B%27requester%27%3A%27http%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%27%7D&tenantDomain=carbon.super&sessionDataKey=2b054744-c88f-49e7-8dfc-6f7c380be4a5&relyingParty=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&type=oidc&sp=NBH_SSO_IOFFICE&isSaaSApp=false&authenticators=BasicAuthenticator%3ALOCAL">
-                        <img src="../img/vanban.jpg" alt="Middle Banner Image">
-                    </a>
                     <a href="#">
                         <img src="../img/dlnb.jpg" alt="Middle Banner Image">
                     </a>
-
-
                 </div>
                 <div class="sidebar-section">
                     <h3>Văn Bản Mới Ban Hành</h3>
                     <div class="scrolling-documents">
                         <ul id="documentList">
                             <?php foreach ($documents as $doc): ?>
-                            <li><a href=""> <strong>Văn bản số:
+                            <li><a href="<?php echo htmlspecialchars($doc['attachment_url']); ?>"> <strong>Văn bản số:
                                         <?php echo htmlspecialchars($doc['document_number']); ?></strong><br>
                                     <?php echo htmlspecialchars($doc['excerpt']); ?>
                                 </a></li>
@@ -135,6 +145,10 @@ session_start();
                     <img src="../img/email.jpg" alt="Middle Banner Image">
                 </a>
                 <a
+                    href="https://login.ninhbinh.gov.vn/authenticationendpoint/login.do?client_id=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&commonAuthCallerPath=%2Foauth2%2Fauthorize&forceAuth=false&passiveAuth=false&redirect_uri=https%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%2Flogin.aspx&response_type=code&scope=openid&state=%7B%27requester%27%3A%27http%3A%2F%2Fqlvbyenkhanh.ninhbinh.gov.vn%27%7D&tenantDomain=carbon.super&sessionDataKey=2b054744-c88f-49e7-8dfc-6f7c380be4a5&relyingParty=Cmj6KiXAjPDZ_ugM9hCFFYST6bca&type=oidc&sp=NBH_SSO_IOFFICE&isSaaSApp=false&authenticators=BasicAuthenticator%3ALOCAL">
+                    <img src="../img/vanban.jpg" alt="Middle Banner Image">
+                </a>
+                <a
                     href="https://storage-vnportal.vnpt.vn/nbh-ubnd/sitefolders/root/vanban/2022/congkhaidonvitthc-cham-muon/100_phu_luc_danh_sach_ho_so_tre_han_-017_den_0102022-_.pdf">
                     <img src="../img/tthc.jpg" alt="Middle Banner Image">
                 </a>
@@ -161,12 +175,14 @@ require_once __DIR__ . '/../controllers/NewsController.php';
 $newsController = new NewsController();
 $newsData = $newsController->getNewsData();
 $categoryImages = $newsController->getCategoryImages();
+$categories = $newsController->getAllCates();
+
 ?>
 
         <div class="news-container">
             <!-- DU LỊCH - DỊCH VỤ -->
             <div class="news-section">
-                <h2 class="section-title">DU LỊCH - DỊCH VỤ</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[2]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['du_lich_dich_vu']; ?>" alt="Latest News Image"
                         class="latest-news-img">
@@ -185,7 +201,7 @@ $categoryImages = $newsController->getCategoryImages();
 
             <!-- THÔNG TIN QUY HOẠCH -->
             <div class="news-section">
-                <h2 class="section-title">THÔNG TIN QUY HOẠCH</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[3]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['thong_tin_quy_hoach']; ?>" alt="Latest News Image"
                         class="latest-news-img">
@@ -204,7 +220,7 @@ $categoryImages = $newsController->getCategoryImages();
 
             <!-- CẢI CÁCH HÀNH CHÍNH -->
             <div class="news-section">
-                <h2 class="section-title">CẢI CÁCH HÀNH CHÍNH</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[4]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['cai_cach_hanh_chinh']; ?>" alt="Latest News Image"
                         class="latest-news-img">
@@ -224,7 +240,7 @@ $categoryImages = $newsController->getCategoryImages();
 
             <!-- PHỔ BIẾN PHÁP LUẬT -->
             <div class="news-section">
-                <h2 class="section-title">PHỔ BIẾN PHÁP LUẬT</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[5]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['pho_bien_phap_luat']; ?>" alt="Latest News Image"
                         class="latest-news-img">
@@ -244,7 +260,7 @@ $categoryImages = $newsController->getCategoryImages();
 
             <!-- THÔNG TIN - TIN TỨC -->
             <div class="news-section">
-                <h2 class="section-title">THÔNG TIN - TIN TỨC</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[6]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['thong_tin_tin_tuc']; ?>" alt="Latest News Image"
                         class="latest-news-img">
@@ -263,7 +279,7 @@ $categoryImages = $newsController->getCategoryImages();
 
             <!-- VĂN HÓA - XÃ HỘI -->
             <div class="news-section">
-                <h2 class="section-title">VĂN HÓA - XÃ HỘI</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[7]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['van_hoa_xa_hoi']; ?>" alt="Latest News Image"
                         class="latest-news-img">
@@ -282,7 +298,7 @@ $categoryImages = $newsController->getCategoryImages();
 
             <!-- QUỐC PHÒNG - AN NINH -->
             <div class="news-section">
-                <h2 class="section-title">QUỐC PHÒNG - AN NINH</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[8]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['quoc_phong_an_ninh']; ?>" alt="Latest News Image"
                         class="latest-news-img">
@@ -301,7 +317,7 @@ $categoryImages = $newsController->getCategoryImages();
 
             <!-- KINH TẾ -->
             <div class="news-section">
-                <h2 class="section-title">KINH TẾ</h2>
+                <h2 class="section-title"><?php echo htmlspecialchars($categoryMap[9]); ?></h2>
                 <div class="latest-news">
                     <img src="<?php echo $categoryImages['kinh_te']; ?>" alt="Latest News Image"
                         class="latest-news-img">

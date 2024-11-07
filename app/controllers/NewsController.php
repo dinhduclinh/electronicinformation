@@ -10,28 +10,24 @@ class NewsController {
     }
 
     public function index() {
-        // Lấy tin tức mới nhất
+        
         $latestNews = $this->model->getLatestNews();
         $documentController = new DocumentController();
-    $documents = $documentController->getSidebarDocuments();
-        // Truyền dữ liệu vào view
+        $documents = $documentController->getSidebarDocuments();
+
         include __DIR__ . '/../views/news.php';
     }
 
-    // Hàm để hiển thị trang tin tức chính
     public function displayNewsPage() {
-        $news = $this->model->getNews();  // Lấy tất cả các tin tức chính
-        $latestNews = $this->model->getLatestNews();  // Lấy tin mới từ bảng `latest_news`
-        // Lấy hình ảnh từ tin tức mới nhất của từng loại tin tức
+        $news = $this->model->getNews(); 
+        $latestNews = $this->model->getLatestNews(); 
+
         $categoryImages = $this->getCategoryImages();
-        // Truyền dữ liệu vào view
         include __DIR__ . '/../views/news.php';
     }
 
-    // Phương thức mới để lấy dữ liệu từ các bảng
     public function getNewsData() {
         $newsModel = new NewsModel();
-        // Lấy dữ liệu từ các bảng
         $duLichDichVu = $newsModel->getNewsByCategory('du_lich_dich_vu');
         $thongTinQuyHoach = $newsModel->getNewsByCategory('thong_tin_quy_hoach');
         $caiCachHanhChinh = $newsModel->getNewsByCategory('cai_cach_hanh_chinh');
@@ -52,7 +48,7 @@ class NewsController {
         ];
     }
 
-    // Phương thức để lấy hình ảnh từ tin tức mới nhất của từng loại tin tức
+    
     public function getCategoryImages() {
         $categories = [
             'du_lich_dich_vu',
@@ -97,6 +93,14 @@ class NewsController {
         }
 
         return array_slice($featuredNews,0,6);
+    }
+
+    public function getCateById($id) {
+        return $this->model->getCateById($id);
+    }
+
+    public function getAllCates() {
+        return $this->model->getAllCates();
     }
 }
 ?>

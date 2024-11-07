@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $captcha = $_POST['captcha'];
 
-    // Kiểm tra Captcha
     if (!isset($_SESSION['captcha']) || $_SESSION['captcha'] != $captcha) {
         $_SESSION['error'] = 'Mã Captcha không đúng!';
         header('Location: login.php');
@@ -20,10 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userModel = new UserModel();
     $user = $userModel->getUserByUsername($username);
 
-    // Kiểm tra tên người dùng và mật khẩu
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['full_name'] = $user['full_name']; // Lưu full_name vào session
+        $_SESSION['full_name'] = $user['full_name']; 
         header('Location: ../admin.php');
     } else {
         $_SESSION['error'] = 'Tên đăng nhập hoặc mật khẩu không đúng!';

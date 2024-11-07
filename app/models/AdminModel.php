@@ -18,7 +18,7 @@ class AdminModel {
     }
 
     public function getNewsByCategory($category) {
-        $sql = "SELECT * FROM $category ORDER BY published_date DESC";  // Dùng tên bảng theo danh mục
+        $sql = "SELECT * FROM $category ORDER BY published_date DESC"; 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -100,7 +100,6 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
         return $slug;
     }
 
-    // Xóa tin tức
     public function deleteNews($id, $category) {
         $sql = "DELETE FROM $category WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
@@ -108,7 +107,6 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
         return $stmt->execute();
     }
 
-    // Lấy tất cả các tin tức từ tất cả các bảng
     public function getAllNews() {
         $categories = [
             'latest_news', 'du_lich_dich_vu', 'thong_tin_quy_hoach',
@@ -126,7 +124,6 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
             $allNews = array_merge($allNews, $result);
         }
 
-        // Sắp xếp lại theo ngày đăng
         usort($allNews, function($a, $b) {
             return strtotime($b['published_date']) - strtotime($a['published_date']);
         });
@@ -135,7 +132,6 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
     }
 
     public function getNewsBySlug($slug) {
-        // Danh sách các bảng cần kiểm tra
         $categories = [
             'latest_news', 'du_lich_dich_vu', 'thong_tin_quy_hoach',
             'cai_cach_hanh_chinh', 'pho_bien_phap_luat', 'thong_tin_tin_tuc', 'van_hoa_xa_hoi',
@@ -155,5 +151,16 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
         }
 
         return null;
+    }
+
+    public function getAllCategories() {
+        $stmt = $this->conn->prepare("SELECT * FROM cate");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function editCategory($id, $name) {
+        $stmt = $this->conn->prepare("UPDATE cate SET name = ? WHERE id = ?");
+        return $stmt->execute([$name, $id]);
     }
 }

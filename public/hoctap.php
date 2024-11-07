@@ -14,10 +14,8 @@ session_start();
 </head>
 
 <body class="gioithieu-body">
-    <!-- Include header -->
     <?php include '../app/views/header.php'; ?>
 
-    <!-- Nội dung trang Tóm Tắt -->
     <div class="gioithieu-container">
         <h1 class="gioithieu-title">Học Tập và Làm Theo Tư Tưởng Đạo Đức Hồ Chí Minh</h1>
 

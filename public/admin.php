@@ -12,22 +12,29 @@ require_once '../app/controllers/FooterController.php';
 $adminController = new AdminController();
 $footerController = new FooterController($adminController->model->getConnection());
 
-// Khởi tạo biến $categories
+$categoriesFromDB = $adminController->getAllCategories();
+
+$categoryMap = [];
+foreach ($categoriesFromDB as $category) {
+    $categoryMap[$category['id']] = $category['name'];
+}
+
 $categories = [
-    'latest_news' => 'Tin mới',
-    'du_lich_dich_vu' => 'Du Lịch - Dịch Vụ',
-    'thong_tin_quy_hoach' => 'Thông Tin Quy Hoạch',
-    'cai_cach_hanh_chinh' => 'Cải Cách Hành Chính',
-    'pho_bien_phap_luat' => 'Phổ Biến Pháp Luật',
-    'thong_tin_tin_tuc' => 'Thông Tin - Tin Tức',
-    'van_hoa_xa_hoi' => 'Văn Hóa - Xã Hội',
-    'quoc_phong_an_ninh' => 'Quốc Phòng - An Ninh',
-    'kinh_te' => 'Kinh Tế'
+    'latest_news' => $categoryMap[1], 
+    'du_lich_dich_vu' => $categoryMap[2], 
+    'thong_tin_quy_hoach' => $categoryMap[3], 
+    'cai_cach_hanh_chinh' => $categoryMap[4], 
+    'pho_bien_phap_luat' => $categoryMap[5], 
+    'thong_tin_tin_tuc' => $categoryMap[6], 
+    'van_hoa_xa_hoi' => $categoryMap[7], 
+    'quoc_phong_an_ninh' => $categoryMap[8],
+    'kinh_te' => $categoryMap[9], 
 ];
+
 
 function loadAllNewsContent($adminController) {
     $news = $adminController->getAllNews();
-    $stt = 1; // Biến đếm số thứ tự
+    $stt = 1; 
     ob_start();
 ?>
 <table>
@@ -38,7 +45,7 @@ function loadAllNewsContent($adminController) {
             <th>URL</th>
             <th>Hình ảnh</th>
             <th>Nội dung</th>
-            <th>Trích dẫn</th> <!-- Thêm cột này -->
+            <th>Trích dẫn</th>
             <th>Ngày đăng</th>
             <th>Tin nổi bật</th>
             <th>Hành động</th>
@@ -47,13 +54,13 @@ function loadAllNewsContent($adminController) {
     <tbody>
         <?php foreach ($news as $item): ?>
         <tr>
-            <td><?= $stt++ ?></td> <!-- Số thứ tự -->
+            <td><?= $stt++ ?></td>
             <td><?= htmlspecialchars($item['title']) ?></td>
             <td><?= htmlspecialchars($item['url']) ?></td>
             <td><img src="<?= isset($item['image_url']) ? htmlspecialchars($item['image_url']) : '' ?>" alt="Image"
                     width="100"></td>
             <td class="content-cell"><?= htmlspecialchars($item['content']) ?></td>
-            <td class="excerpt-cell"><?= htmlspecialchars($item['excerpt']) ?></td> <!-- Thêm cột này -->
+            <td class="excerpt-cell"><?= htmlspecialchars($item['excerpt']) ?></td>
             <td><?= isset($item['published_date']) ? $item['published_date'] : '' ?></td>
             <td><?= $item['is_featured'] ? 'Có' : 'Không' ?></td>
             <td>
@@ -72,7 +79,7 @@ function loadAllNewsContent($adminController) {
     return ob_get_clean();
 }
 
-// Handle form submissions
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'add':
@@ -89,12 +96,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     exit;
 }
 
-// Handle edit action
+
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $id = $_GET['id'];
     if ($_GET['action'] === 'edit') {
         $news = $adminController->getNewsById($id);
-        // Đảm bảo rằng bạn lấy nội dung và các thông tin khác
         $editTitle = $news['title'];
         $editContent = $news['content'];
         $editImageUrl = isset($news['image_url']) ? $news['image_url'] : '';
@@ -120,9 +126,8 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             <a href="http://localhost/ProjectOJT/public/">Xem trang</a>
         </h3>
         <h2 id="category-title">Tất cả bài viết</h2>
-        <!-- Nút thêm mới -->
         <button id="addNewBtn">Thêm mới</button>
-        <!-- Form thêm mới (ẩn đi ban đầu) -->
+
         <div id="addNewsForm" style="display: none;">
             <form action="admin.php" method="post">
                 <input type="hidden" name="action" value="add"><br>
@@ -150,7 +155,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             <?= loadAllNewsContent($adminController) ?>
         </div>
     </div>
-    <!-- Modal sửa tin -->
+
     <div id="editNewsModal" class="modal">
         <div class="modal-overlay">
             <div class="modal-content">
@@ -159,7 +164,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 <form action="admin.php" method="post">
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" id="editId" name="id">
-                    <input type="hidden" id="oldCategory" name="oldCategory"> <!-- Thêm trường ẩn này -->
+                    <input type="hidden" id="oldCategory" name="oldCategory">
                     <label for="editTitle">Tiêu đề:</label>
                     <input type="text" id="editTitle" name="title" required>
                     <label for="editImageUrl">Hình ảnh:</label>
@@ -182,7 +187,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             </div>
         </div>
     </div>
-    <!-- Modal xác nhận xóa -->
+
     <div id="deleteModal" class="modal">
         <div class="modal-overlay">
             <div class="modal-content">
@@ -198,7 +203,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             </div>
         </div>
     </div>
-    <!-- Modal chọn hình ảnh -->
+
     <div id="imageModal" class="modal">
         <div class="modal-overlay">
             <div class="modal-content">

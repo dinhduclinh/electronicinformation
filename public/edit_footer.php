@@ -12,7 +12,6 @@ require_once '../app/controllers/FooterController.php';
 $adminController = new AdminController();
 $footerController = new FooterController($adminController->model->getConnection());
 
-// Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     if ($_POST['action'] === 'update_footer') {
         $footerContent = $_POST['footer_content'];

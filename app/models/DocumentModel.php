@@ -37,7 +37,7 @@ class DocumentModel {
         $stmt->bindParam(1, $document_number, PDO::PARAM_STR);
         $stmt->bindParam(2, $issued_date, PDO::PARAM_STR);
         $stmt->bindParam(3, $excerpt, PDO::PARAM_STR);
-        $stmt->bindParam(4, $attachment_url, PDO::PARAM_STR); // Lưu đường dẫn thay vì dữ liệu nhị phân
+        $stmt->bindParam(4, $attachment_url, PDO::PARAM_STR); 
         $stmt->bindParam(5, $signer, PDO::PARAM_STR);
         $stmt->bindParam(6, $document_type_id, PDO::PARAM_INT);
         return $stmt->execute();
@@ -49,7 +49,7 @@ class DocumentModel {
         $stmt->bindParam(1, $document_number, PDO::PARAM_STR);
         $stmt->bindParam(2, $issued_date, PDO::PARAM_STR);
         $stmt->bindParam(3, $excerpt, PDO::PARAM_STR);
-        $stmt->bindParam(4, $attachment_url, PDO::PARAM_STR); // Lưu đường dẫn thay vì dữ liệu nhị phân
+        $stmt->bindParam(4, $attachment_url, PDO::PARAM_STR);
         $stmt->bindParam(5, $signer, PDO::PARAM_STR);
         $stmt->bindParam(6, $document_type_id, PDO::PARAM_INT);
         $stmt->bindParam(7, $id, PDO::PARAM_INT);

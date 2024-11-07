@@ -15,7 +15,6 @@ $footerContent = $footerController->getFooter();
 </footer>
 
 <script>
-// Loại bỏ các thẻ HTML và thực thể HTML, giữ lại các ký tự xuống dòng
 var footerContent = document.getElementById('footerContent').innerHTML;
 footerContent = footerContent.replace(/<[^>]+>/g, ''); // Loại bỏ tất cả các thẻ HTML
 footerContent = footerContent.replace(/&nbsp;/g, ' '); // Thay thế &nbsp; bằng khoảng trắng

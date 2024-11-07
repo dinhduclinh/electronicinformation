@@ -1,8 +1,6 @@
 <?php
-// Không cần gọi session_start() ở đây
 require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../models/VoteModel.php'; // Đảm bảo đường dẫn chính xác
-
+require_once __DIR__ . '/../models/VoteModel.php'; 
 class VoteController {
     private $db;
     private $voteModel;
@@ -14,14 +12,13 @@ class VoteController {
 
     public function vote() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Xóa session kết quả đã hiển thị để cho phép hiển thị lại
         unset($_SESSION['results_displayed']);
         
         if (isset($_POST['vote'])) {
             $optionId = $_POST['vote'];
-            // Ghi giá trị optionId vào log
-            error_log("Selected Option ID: " . $optionId); // Ghi vào log
-            // Thêm bình chọn vào cơ sở dữ liệu
+
+            error_log("Selected Option ID: " . $optionId); 
+
             if ($this->voteModel->addVote($optionId)) {
                 echo "<script>alert('Bình chọn thành công!'); window.location.href='/ProjectOJT/public/lienhe.php?action=results';</script>";
             } else {

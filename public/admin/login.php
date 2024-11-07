@@ -18,7 +18,7 @@
             }
             if (isset($_SESSION['error'])) {
                 echo '<p class="error">' . htmlspecialchars($_SESSION['error']) . '</p>';
-                unset($_SESSION['error']); // Xóa thông báo lỗi sau khi hiển thị
+                unset($_SESSION['error']); 
             }
             ?>
             <form action="login_process.php" method="post">
