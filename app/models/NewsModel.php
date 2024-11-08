@@ -46,7 +46,7 @@ class NewsModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-// Lấy danh mục theo ID
+
     public function getCateById($id) {
         $sql = "SELECT * FROM cate WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
@@ -55,7 +55,6 @@ class NewsModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Lấy tất cả danh mục
     public function getAllCates() {
         $sql = "SELECT * FROM cate";
         $stmt = $this->conn->prepare($sql);

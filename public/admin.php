@@ -53,7 +53,7 @@ function loadAllNewsContent($adminController) {
     </thead>
     <tbody>
         <?php foreach ($news as $item): ?>
-        <tr>
+        <tr data-category="<?= isset($item['category']) ? $item['category'] : '' ?>">
             <td><?= $stt++ ?></td>
             <td><?= htmlspecialchars($item['title']) ?></td>
             <td><?= htmlspecialchars($item['url']) ?></td>
@@ -117,6 +117,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     <title>Quản trị</title>
     <link rel="stylesheet" href="css/admin.css">
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script src="js/admin.js"></script>
 </head>
 
 <body>
@@ -126,31 +127,19 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             <a href="http://localhost/ProjectOJT/public/">Xem trang</a>
         </h3>
         <h2 id="category-title">Tất cả bài viết</h2>
-        <button id="addNewBtn">Thêm mới</button>
 
-        <div id="addNewsForm" style="display: none;">
-            <form action="admin.php" method="post">
-                <input type="hidden" name="action" value="add"><br>
-                <label for="is_featured">Tin nổi bật</label>
-                <input type="checkbox" id="is_featured" name="is_featured" value="true"><br><br>
-                <label for="title">Tiêu đề:</label>
-                <input type="text" id="title" name="title" required>
-                <label for="image_url">Hình ảnh:</label>
-                <button type="button" id="uploadImageBtn">Chọn Hình Ảnh</button>
-                <input type="text" id="image_url" name="image_url" required>
-                <label for="excerpt">Trích dẫn:</label>
-                <textarea id="excerpt" name="excerpt" rows="4"></textarea>
-                <label for="content">Nội dung:</label>
-                <textarea id="content" name="content" rows="6"></textarea>
-                <label for="category">Danh mục:</label>
-                <select id="category" name="category" required>
-                    <?php foreach ($categories as $key => $value): ?>
-                    <option value="<?= htmlspecialchars($key) ?>"><?= htmlspecialchars($value) ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <button type="submit">Thêm</button>
-            </form>
+        <div>
+            <label for="searchInput">Tìm kiếm:</label>
+            <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
+            <label for="categoryFilter">Lọc:</label>
+            <select id="categoryFilter">
+                <option value="all">Tất cả</option>
+                <?php foreach ($categories as $key => $value): ?>
+                <option value="<?= htmlspecialchars($key) ?>"><?= htmlspecialchars($value) ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
+
         <div id="news-list">
             <?= loadAllNewsContent($adminController) ?>
         </div>

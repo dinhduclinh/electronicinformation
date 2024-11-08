@@ -117,7 +117,7 @@ public function deleteNewsFromOldCategory($id, $oldCategory) {
         $allNews = [];
 
         foreach ($categories as $category) {
-            $sql = "SELECT *, '$category' AS category FROM $category ORDER BY published_date DESC"; // Thêm '$category' AS category
+            $sql = "SELECT *, '$category' AS category FROM $category ORDER BY published_date DESC"; 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

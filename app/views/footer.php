@@ -10,13 +10,12 @@ $footerContent = $footerController->getFooter();
 
 <footer>
     <p id="footerContent">
-        <?= isset($footerContent['content']) ? htmlspecialchars($footerContent['content']) : '© 2024 Ninh Bình News' ?>
+        <?php 
+        if (isset($footerContent['content'])) {
+            echo nl2br($footerContent['content']);
+        } else {
+            echo '© 2024 Ninh Bình News';
+        }
+        ?>
     </p>
 </footer>
-
-<script>
-var footerContent = document.getElementById('footerContent').innerHTML;
-footerContent = footerContent.replace(/<[^>]+>/g, ''); // Loại bỏ tất cả các thẻ HTML
-footerContent = footerContent.replace(/&nbsp;/g, ' '); // Thay thế &nbsp; bằng khoảng trắng
-document.getElementById('footerContent').innerText = footerContent;
-</script>

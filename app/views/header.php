@@ -16,7 +16,7 @@ $welcomeMessage = $welcomeController->getWelcomeMessage();
     <nav class="navbar">
         <ul>
             <li><a href="http://localhost/ProjectOJT/public/">Trang chủ</a></li>
-            <li><a href="gioithieu.php">Giới thiệu</a></li>
+            <li><a href="gioithieu">Giới thiệu</a></li>
             <li><a href="#">Tin tức - Sự kiện</a></li>
             <li><a href="#">Công khai</a></li>
             <li><a href="https://dichvucong.ninhbinh.gov.vn/">Dịch vụ công</a></li>

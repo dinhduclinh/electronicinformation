@@ -42,7 +42,7 @@ foreach ($categories as $category) {
                         $featuredNews = $newsController->getFeaturedNews();
 
                         if (!empty($featuredNews)):
-                            $mainNews = $featuredNews[0]; // Lấy tin nổi bật đầu tiên
+                            $mainNews = $featuredNews[0]; 
                         ?>
                         <div class="main-news" id="main-news">
                             <div class="news-image" id="main-news-image">
@@ -68,7 +68,7 @@ foreach ($categories as $category) {
                         <?php endif; ?>
                     </div>
                     <div class="news-carousel">
-                        <button class="carousel-btn" id="prevBtn">&#10094;</button> <!-- Mũi tên trái -->
+                        <button class="carousel-btn" id="prevBtn">&#10094;</button>
                         <div class="news-carousel-inner" id="carousel">
                             <?php foreach ($featuredNews as $item): ?>
                             <div class="carousel-item">
@@ -77,21 +77,25 @@ foreach ($categories as $category) {
                             </div>
                             <?php endforeach; ?>
                         </div>
-                        <button class="carousel-btn" id="nextBtn">&#10095;</button> <!-- Mũi tên phải -->
+                        <button class="carousel-btn" id="nextBtn">&#10095;</button>
                     </div>
                 </div>
             </div>
 
             <div class="right-sidebar">
-                <div class="category-list">
+                <!-- <div class="category-list">
                     <button>Công tác Đảng</button>
                     <button>Giáo dục - Đào tạo</button>
                     <button>Danh sách xã - thị trấn</button>
-                </div>
+                </div> -->
                 <div class="imgtt">
-                    <a href="#">
-                        <img src="../img/dlnb.jpg" alt="Middle Banner Image">
+                    <a href="https://vanban.chinhphu.vn/?pageid=27160&docid=171264&classid=1&typegroupid=1">
+                        <img src="../img/hienphap.jpg" alt="Middle Banner Image">
                     </a>
+                    <a href="#">
+                        <img src="../img/trangan1.gif" alt="Middle Banner Image">
+                    </a>
+
                 </div>
                 <div class="sidebar-section">
                     <h3>Văn Bản Mới Ban Hành</h3>
@@ -119,7 +123,7 @@ foreach ($categories as $category) {
 
     <div class="main-layout">
         <div class="left-banner">
-            <h3 class="banner-heading">TIN MỚI</h3>
+            <h3 class="banner-heading"><?php echo htmlspecialchars($categoryMap[1]); ?></h3>
             <div class="scrolling-news">
                 <ul class="latest-news-list" id="latestNewsList">
                     <?php foreach ($latestNews as $newsItem): ?>
@@ -159,9 +163,13 @@ foreach ($categories as $category) {
                     <img src="https://storage-vnportal.vnpt.vn/nbh-ubnd/sitefolders/root/2303/banner/hoc_tap_tam_guong_20171127033904211210.jpg"
                         alt="Middle Banner Image">
                 </a>
-                <a href="https://vanban.chinhphu.vn/?pageid=27160&docid=171264&classid=1&typegroupid=1">
-                    <img src="../img/hienphap.jpg" alt="Middle Banner Image">
+                <a href="#">
+                    <img src="../img/ocop.jpg" alt="Middle Banner Image">
                 </a>
+                <a href="#">
+                    <img src="../img/dlnb.jpg" alt="Middle Banner Image">
+                </a>
+
                 <a>
                     <img src="../img/qrzalo.jpg" alt="Middle Banner Image">
                 </a>

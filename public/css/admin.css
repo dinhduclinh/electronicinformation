@@ -6,49 +6,6 @@ body {
     display: flex;
 }
 
-.sidebar {
-    width: 170px;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    min-height: 100vh;
-}
-
-.sidebar h2 {
-    margin-bottom: 20px;
-}
-
-.sidebar h2 a {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 18px;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin-bottom: 10px;
-}
-
-.sidebar ul li a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-size: 13px;
-}
-
-.sidebar ul li a:hover {
-    background-color: #555;
-}
 
 .content {
     flex: 1;
@@ -258,4 +215,69 @@ form button[type="submit"]:hover {
 
 .delete-image-btn:hover {
     background-color: darkred;
+}
+
+/* Ẩn các mục con ban đầu */
+.submenu {
+    display: none;
+}
+
+/* Hiển thị các mục con khi có class 'active' */
+.submenu.active {
+    display: block;
+}
+
+/* Style for search input and category filter */
+.content {
+    padding: 20px;
+}
+
+.content label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#searchInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+#categoryFilter {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 330px;
+}
+
+#documentTypeFilter{
+    margin-bottom: 20px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 330px;
+}
+
+/* Style for table */
+#news-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#news-list th, #news-list td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#news-list th {
+    background-color: #f2f2f2;
+}
+
+#news-list tr:hover {
+    background-color: #f5f5f5;
 }
