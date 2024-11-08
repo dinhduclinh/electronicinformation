@@ -45,7 +45,7 @@ $(document).ready(function () {
     formData += "&is_featured=" + isFeatured;
     console.log("Form data:", formData);
     $.ajax({
-      url: "Addnews.php",
+      url: "Addnews",
       type: "POST",
       data: formData,
       success: function (response) {
@@ -167,7 +167,7 @@ $(document).ready(function () {
   });
 
   // Initialize CKEditor for Add News Form on Addnews.php
-  if (window.location.pathname.endsWith("Addnews.php")) {
+  if (window.location.pathname.endsWith("Addnews")) {
     initializeAddNewsForm();
   }
 });
