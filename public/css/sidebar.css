@@ -6,7 +6,7 @@
     color: #fff;
     padding: 20px;
     min-height: 100vh;
-    font-family: Arial, sans-serif; /* Font chữ cũ */
+    font-family: Arial, sans-serif;
 }
 
 .sidebar h2 {
@@ -67,11 +67,10 @@
     transition: transform 0.3s ease;
 }
 
-.hidden {
-    display: none;
-}
-
 #articleButtons, #documentButtons {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
     padding-left: 10px;
     margin-left: 25px;
     border-left: 2px solid #fff;
@@ -81,7 +80,7 @@
 .submenu-item a {
     display: block;
     padding: 5px 10px;
-    font-size: 8px; /* Kích thước chữ nhỏ hơn */
+    font-size: 8px;
     color: #fff;
     text-decoration: none;
     border-radius: 3px;
