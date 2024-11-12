@@ -72,8 +72,10 @@ foreach ($categories as $category) {
                         <div class="news-carousel-inner" id="carousel">
                             <?php foreach ($featuredNews as $item): ?>
                             <div class="carousel-item">
-                                <img src="<?php echo $item['image_url']; ?>" alt="News Image">
-                                <p><?php echo htmlspecialchars($item['title']); ?></p>
+                                <a href="newshtml.php?slug=<?= htmlspecialchars($item['url']) ?>">
+                                    <img src="<?php echo $item['image_url']; ?>" alt="News Image">
+                                    <p><?php echo htmlspecialchars($item['title']); ?></p>
+                                </a>
                             </div>
                             <?php endforeach; ?>
                         </div>
