@@ -331,13 +331,11 @@ $(document).ready(function () {
   });
 
   $(document).ready(function () {
-    // Handle category filter change
     $("#categoryFilter").change(function () {
       const selectedCategory = $(this).val();
       filterNewsByCategory(selectedCategory);
     });
 
-    // Function to filter news by category
     function filterNewsByCategory(category) {
       const rows = $("#news-list table tbody tr");
       rows.each(function () {
@@ -350,7 +348,6 @@ $(document).ready(function () {
       });
     }
 
-    // Initialize the filter with "all" category
     filterNewsByCategory("all");
   });
 
@@ -365,14 +362,13 @@ $(document).ready(function () {
     str = str.replace(/đ/g, "d");
     return str;
   }
-  // Handle search input change
+
   $("#searchInput").on("input", function () {
     const searchTerm = $(this).val().toLowerCase();
     const searchTermWithoutDiacritics = removeVietnameseDiacritics(searchTerm);
     searchNews(searchTerm, searchTermWithoutDiacritics);
   });
 
-  // Function to search news by keyword
   function searchNews(keyword, keywordWithoutDiacritics) {
     const rows = $("#news-list table tbody tr");
     rows.each(function () {

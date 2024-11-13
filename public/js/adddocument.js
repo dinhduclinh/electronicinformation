@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // Handle form submission for Add Document Form
   $("#addDocumentForm form").submit(function (e) {
     e.preventDefault();
     console.log("Submit add document form");
