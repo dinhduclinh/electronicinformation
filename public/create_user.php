@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -10,25 +11,13 @@ require_once '../app/controllers/UserController.php';
 
 $userController = new UserController();
 
-// Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_user') {
     $userController->createUser();
     exit;
 }
 
-// Hiển thị thông báo
-if (isset($_SESSION['success_message'])) {
-    echo '<div class="success-message">' . $_SESSION['success_message'] . '</div>';
-    unset($_SESSION['success_message']);
-}
-
-if (isset($_SESSION['error_message'])) {
-    echo '<div class="error-message">' . $_SESSION['error_message'] . '</div>';
-    unset($_SESSION['error_message']);
-}
-
-// Lấy danh sách tất cả người dùng
 $users = $userController->getAllUsers();
+
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +46,16 @@ $users = $userController->getAllUsers();
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             <button type="submit">Lưu</button>
+
+            <?php if (isset($_SESSION['success_message'])): ?>
+            <div class="success-message"><?= $_SESSION['success_message'] ?></div>
+            <?php unset($_SESSION['success_message']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="error-message"><?= $_SESSION['error_message'] ?></div>
+            <?php unset($_SESSION['error_message']); ?>
+            <?php endif; ?>
         </form>
 
         <h2>Danh sách người dùng</h2>

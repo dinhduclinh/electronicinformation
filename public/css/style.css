@@ -92,19 +92,182 @@
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 10px; 
-    }
-
-    .news-item {
-        padding: 8px;
+@media (max-width: 4095px) {
+    body {
+        padding: 0 1470px;
     }
 }
 
-@media (max-width: 480px) {
-    .news-item {
-        flex: 1 1 100%; 
+@media (max-width: 3995px) {
+    body {
+        padding: 0 1420px;
+    }
+}
+
+@media (max-width: 3895px) {
+    body {
+        padding: 0 1370px;
+    }
+}
+
+@media (max-width: 3795px) {
+    body {
+        padding: 0 1320px;
+    }
+}
+
+@media (max-width: 3695px) {
+    body {
+        padding: 0 1270px;
+    }
+}
+
+@media (max-width: 3595px) {
+    body {
+        padding: 0 1270px;
+    }
+}
+
+@media (max-width: 3495px) {
+    body {
+        padding: 0 1170px;
+    }
+}
+
+@media (max-width: 3295px) {
+    body {
+        padding: 0 1070px;
+    }
+}
+
+@media (max-width: 3195px) {
+    body {
+        padding: 0 1020px;
+    }
+}
+
+@media (max-width: 3095px) {
+    body {
+        padding: 0 970px;
+    }
+}
+
+@media (max-width: 2995px) {
+    body {
+        padding: 0 870px;
+    }
+}
+@media (max-width: 2795px) {
+    body {
+        padding: 0 820px;
+    }
+}
+
+@media (max-width: 2695px) {
+    body {
+        padding: 0 770px;
+    }
+}
+
+@media (max-width: 2595px) {
+    body {
+        padding: 0 720px;
+    }
+}
+
+@media (max-width: 2495px) {
+    body {
+        padding: 0 670px;
+    }
+}
+
+@media (max-width: 2395px) {
+    body {
+        padding: 0 620px;
+    }
+}
+
+@media (max-width: 2295px) {
+    body {
+        padding: 0 570px;
+    }
+}
+
+@media (max-width: 2195px) {
+    body {
+        padding: 0 520px;
+    }
+}
+
+@media (max-width: 2095px) {
+    body {
+        padding: 0 470px;
+    }
+}
+
+@media (max-width: 1995px) {
+    body {
+        padding: 0 420px;
+    }
+}
+
+@media (max-width: 1895px) {
+    body {
+        padding: 0 370px;
+    }
+}
+
+@media (max-width: 1805px) {
+    body {
+        padding: 0 320px;
+    }
+}
+
+@media (max-width: 1728px) {
+    body {
+        padding: 0 270px;
+    }
+}
+
+@media (max-width: 1600px) {
+    body {
+        padding: 0 220px;
+    }
+}
+
+@media (max-width: 1528px) {
+    body {
+        padding: 0 180px;
+    }
+}
+
+@media (max-width: 1440px) {
+    body {
+        padding: 0 130px;
+    }
+}
+
+@media (max-width: 1366px) {
+    body {
+        padding: 0 100px;
+    }
+}
+
+@media (max-width: 1280px) {
+    body {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    body {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 0px;
     }
 }
 
