@@ -72,28 +72,32 @@ class NewsController {
         return $images;
     }
     public function getFeaturedNews() {
-        $categories = [
-            'du_lich_dich_vu',
-            'thong_tin_quy_hoach',
-            'cai_cach_hanh_chinh',
-            'pho_bien_phap_luat',
-            'thong_tin_tin_tuc',
-            'van_hoa_xa_hoi',
-            'quoc_phong_an_ninh',
-            'kinh_te'
-        ];
+    $categories = [
+        'du_lich_dich_vu',
+        'thong_tin_quy_hoach',
+        'cai_cach_hanh_chinh',
+        'pho_bien_phap_luat',
+        'thong_tin_tin_tuc',
+        'van_hoa_xa_hoi',
+        'quoc_phong_an_ninh',
+        'kinh_te'
+    ];
 
-        $featuredNews = [];
+    $featuredNews = [];
 
-        foreach ($categories as $category) {
-            $news = $this->model->getFeaturedNewsByCategory($category);
-            if (!empty($news)) {
-                $featuredNews = array_merge($featuredNews, $news);
-            }
+    foreach ($categories as $category) {
+        $news = $this->model->getFeaturedNewsByCategory($category);
+        if (!empty($news)) {
+            $featuredNews = array_merge($featuredNews, $news);
         }
-
-        return array_slice($featuredNews,0,6);
     }
+    
+    usort($featuredNews, function($a, $b) {
+        return strtotime($b['published_date']) - strtotime($a['published_date']);
+    });
+    
+    return array_slice($featuredNews, 0, 6);
+}
 
     public function getCateById($id) {
         return $this->model->getCateById($id);
